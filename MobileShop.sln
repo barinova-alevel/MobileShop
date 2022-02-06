@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Host", "Catalog\Catalog.Host\Catalog.Host.csproj", "{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{CB1D48DE-D9EB-41ED-AE23-CEB70D3E8D74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{06CCE973-094F-4E48-951A-8A2BA7E93180}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4} = {CB1D48DE-D9EB-41ED-AE23-CEB70D3E8D74}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4D57F39-A801-46D9-ADE5-1770A5440B66}
+	EndGlobalSection
+EndGlobal
