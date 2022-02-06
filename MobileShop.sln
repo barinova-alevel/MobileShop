@@ -3,13 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Host", "Catalog\Catalog.Host\Catalog.Host.csproj", "{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Host", "Catalog\Catalog.Host\Catalog.Host.csproj", "{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{CB1D48DE-D9EB-41ED-AE23-CEB70D3E8D74}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{06CCE973-094F-4E48-951A-8A2BA7E93180}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{14B7D279-0038-4D29-912C-4F90557625A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure\Infrastructure.csproj", "{EF69E435-0227-4EEF-A744-A9BB24069647}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proxy", "Proxy", "{FCF7962C-210C-4BC2-877B-E2682D8A3DC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{D69728B3-A02E-4FD7-9CB0-26E6DC0551B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{CFC96A54-892D-4717-BB68-2D025139B749}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{BAD58210-4B49-49E9-B17C-D84A7C7BFD6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{830B4D2A-E87C-4377-9745-F535E4D00D87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "conf.d", "conf.d", "{549B2585-3A9C-4693-9B76-92D08635B7B3}"
+	ProjectSection(SolutionItems) = preProject
+		Proxy\gateway\nginx\conf.d\default.conf = Proxy\gateway\nginx\conf.d\default.conf
 	EndProjectSection
 EndProject
 Global
@@ -22,12 +41,22 @@ Global
 		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF69E435-0227-4EEF-A744-A9BB24069647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF69E435-0227-4EEF-A744-A9BB24069647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF69E435-0227-4EEF-A744-A9BB24069647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF69E435-0227-4EEF-A744-A9BB24069647}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FAA4389D-7108-46EB-B7DE-98B9EE7E47C4} = {CB1D48DE-D9EB-41ED-AE23-CEB70D3E8D74}
+		{EF69E435-0227-4EEF-A744-A9BB24069647} = {14B7D279-0038-4D29-912C-4F90557625A7}
+		{D69728B3-A02E-4FD7-9CB0-26E6DC0551B9} = {FCF7962C-210C-4BC2-877B-E2682D8A3DC7}
+		{CFC96A54-892D-4717-BB68-2D025139B749} = {D69728B3-A02E-4FD7-9CB0-26E6DC0551B9}
+		{BAD58210-4B49-49E9-B17C-D84A7C7BFD6F} = {FCF7962C-210C-4BC2-877B-E2682D8A3DC7}
+		{830B4D2A-E87C-4377-9745-F535E4D00D87} = {BAD58210-4B49-49E9-B17C-D84A7C7BFD6F}
+		{549B2585-3A9C-4693-9B76-92D08635B7B3} = {830B4D2A-E87C-4377-9745-F535E4D00D87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4D57F39-A801-46D9-ADE5-1770A5440B66}

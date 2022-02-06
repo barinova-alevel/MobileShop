@@ -67,7 +67,7 @@ namespace Catalog.Host.Data
                     Id = 1,
                     Name = "iPhone 11 128GB Black Slim Box",
                     Price = 20999M,
-                    PictureFileName = "https://content.rozetka.com.ua/goods/images/big/37399233.jpg",
+                    PictureFileName = "37399233.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -88,7 +88,7 @@ namespace Catalog.Host.Data
                     Id = 2,
                     Name = "Apple iPhone 13 Pro Max 256GB Sierra Blue",
                     Price = 44999M,
-                    PictureFileName = "https://content2.rozetka.com.ua/goods/images/big/221290006.jpg",
+                    PictureFileName = "221290006.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -112,7 +112,7 @@ namespace Catalog.Host.Data
                     Id = 3,
                     Name = "Apple iPhone 13 128GB Blue",
                     Price = 29999M,
-                    PictureFileName = "https://content.rozetka.com.ua/goods/images/big/221214143.jpg",
+                    PictureFileName = "221214143.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -136,7 +136,7 @@ namespace Catalog.Host.Data
                     Id = 4,
                     Name = "Huawei P Smart 2021 NFC 128GB Green",
                     Price = 4799M,
-                    PictureFileName = "https://content2.rozetka.com.ua/goods/images/big/163104727.png",
+                    PictureFileName = "163104727.png",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -157,7 +157,7 @@ namespace Catalog.Host.Data
                     Id = 5,
                     Name = "Huawei Nova 8i 6/128GB Moonlight Silver",
                     Price = 8999M,
-                    PictureFileName = "https://content1.rozetka.com.ua/goods/images/big/230224784.jpg",
+                    PictureFileName = "230224784.jpg",
                     Description = @"Стандарт связи
                         2G (GSM)
                         3G (WCDMA/UMTS/HSPA)
@@ -178,7 +178,7 @@ namespace Catalog.Host.Data
                     Id = 6,
                     Name = "Motorola Moto G60 6/128GB Haze Gray",
                     Price = 6999M,
-                    PictureFileName = "https://content2.rozetka.com.ua/goods/images/big/220713124.jpg",
+                    PictureFileName = "220713124.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -201,7 +201,7 @@ namespace Catalog.Host.Data
                     Id = 7,
                     Name = "Motorola E7 Power 4/64GB Tahiti Blue",
                     Price = 3499M,
-                    PictureFileName = "https://content.rozetka.com.ua/goods/images/big/188975851.jpg",
+                    PictureFileName = "188975851.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -224,7 +224,7 @@ namespace Catalog.Host.Data
                     Id = 8,
                     Name = "Motorola E6i 2/32GB Meteor Grey",
                     Price = 2899M,
-                    PictureFileName = "https://content2.rozetka.com.ua/goods/images/big/188927047.jpg",
+                    PictureFileName = "188927047.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -247,7 +247,7 @@ namespace Catalog.Host.Data
                     Id = 9,
                     Name = "Motorola Moto Edge 20 Pro 12/256GB Midnight Blue",
                     Price = 17999M,
-                    PictureFileName = "https://content2.rozetka.com.ua/goods/images/big/221069029.jpg",
+                    PictureFileName = "221069029.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -271,7 +271,7 @@ namespace Catalog.Host.Data
                     Id = 10,
                     Name = "Motorola G200 5G 8/128GB Stellar Blue",
                     Price = 15999M,
-                    PictureFileName = "https://content2.rozetka.com.ua/goods/images/big/243884320.jpg",
+                    PictureFileName = "243884320.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -295,7 +295,7 @@ namespace Catalog.Host.Data
                     Id = 11,
                     Name = "Motorola G100 8/128GB Iridescent Ocean",
                     Price = 11999M,
-                    PictureFileName = "https://content2.rozetka.com.ua/goods/images/big/189057862.jpg",
+                    PictureFileName = "189057862.jpg",
                     Description = @"Стандарт связи
                         2G (GPRS/EDGE)
                         3G (WCDMA/UMTS/HSPA)
@@ -319,7 +319,7 @@ namespace Catalog.Host.Data
                     Id = 12,
                     Name = "Motorola Razr 5G 8/256GB Graphite",
                     Price = 64799M,
-                    PictureFileName = "https://content2.rozetka.com.ua/goods/images/big/169925194.jpg",
+                    PictureFileName = "169925194.jpg",
                     Description = @"Стандарт связи
                         3G
                         4G (LTE)
