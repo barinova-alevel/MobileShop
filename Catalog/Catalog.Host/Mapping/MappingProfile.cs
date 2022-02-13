@@ -10,8 +10,14 @@ public class MappingProfile : Profile
     {
         CreateMap<Mobile, MobileDto>()
             .ForMember(_ => _.PictureUrl, opt
-                => opt.MapFrom<CatalogItemPictureResolver, string>(c => c.PictureFileName));
-        CreateMap<Brand, BrandDto>();
-        CreateMap<OperationSystem, OperationSystemDto>();
+                => opt.MapFrom<MobilePictureResolver, string>(c => c.PictureFileName));
+        CreateMap<MobileBrand, MobileBrandDto>();
+        CreateMap<MobileOs, OperationSystemDto>();
+
+        CreateMap<Laptop, LaptopDto>()
+            .ForMember(_ => _.PictureUrl, opt
+                => opt.MapFrom<LaptopPictureResolver, string>(c => c.PictureFileName));
+        CreateMap<LaptopBrand, LaptopBrandDto>();
+        CreateMap<LaptopScreenType, ScreenTypeDto>();
     }
 }

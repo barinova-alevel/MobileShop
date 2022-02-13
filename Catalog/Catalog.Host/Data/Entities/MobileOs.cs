@@ -1,9 +1,8 @@
-﻿namespace Catalog.Host.Models.Dtos
+﻿namespace Catalog.Host.Data.Entities
 {
-    public class BrandDto
+    public class MobileOs : IBaseEntity
     {
         public int Id { get; set; }
-
         public string Name { get; set; } = null!;
     }
 }

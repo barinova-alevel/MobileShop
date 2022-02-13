@@ -8,9 +8,9 @@ namespace Catalog.Host.Data
         {
             await context.Database.EnsureCreatedAsync();
 
-            if (!context.Brands.Any())
+            if (!context.MobileBrands.Any())
             {
-                await context.Brands.AddRangeAsync(GetPreconfiguredBrands());
+                await context.MobileBrands.AddRangeAsync(GetPreconfiguredBrands());
 
                 await context.SaveChangesAsync();
             }
@@ -30,9 +30,9 @@ namespace Catalog.Host.Data
             }
         }
 
-        private static IEnumerable<Brand> GetPreconfiguredBrands()
+        private static IEnumerable<MobileBrand> GetPreconfiguredBrands()
         {
-            return new List<Brand>()
+            return new List<MobileBrand>()
             {
                 new() { Id = 1, Name = "Apple" },
                 new() { Id = 2, Name ="Huawey" },
@@ -48,9 +48,9 @@ namespace Catalog.Host.Data
             };
         }
 
-        private static IEnumerable<OperationSystem> GetPreconfiguredOperationSystems()
+        private static IEnumerable<MobileOs> GetPreconfiguredOperationSystems()
         {
-            return new List<OperationSystem>()
+            return new List<MobileOs>()
             {
                 new() { Id = 1, Name = "Android" },
                 new() { Id = 2, Name = "BlackBerry" },
@@ -79,7 +79,7 @@ namespace Catalog.Host.Data
                         1792 x 828
                         Тип матрицы
                         IPS",
-                    BrandId = 1,
+                    MobileBrandId = 1,
                     OperationSystemId = 3,
                     AvailableStock = 2                        
                 },
@@ -103,7 +103,7 @@ namespace Catalog.Host.Data
                         OLED (Super Retina XDR)
                         Частота обновления экрана
                         120 Гц",
-                    BrandId = 1,
+                    MobileBrandId = 1,
                     OperationSystemId = 3,
                     AvailableStock = 1
                 },
@@ -127,7 +127,7 @@ namespace Catalog.Host.Data
                         OLED (Super Retina XDR)
                         Частота обновления экрана
                         60 Гц",
-                    BrandId = 1,
+                    MobileBrandId = 1,
                     OperationSystemId = 3,
                     AvailableStock = 3
                 },
@@ -148,7 +148,7 @@ namespace Catalog.Host.Data
                         2400 x 1080
                         Тип матрицы
                         IPS",
-                    BrandId = 2,
+                    MobileBrandId = 2,
                     OperationSystemId = 1,
                     AvailableStock = 1
                 },
@@ -169,7 +169,7 @@ namespace Catalog.Host.Data
                         2376 x 1080
                         Тип матрицы
                         IPS",
-                    BrandId = 2,
+                    MobileBrandId = 2,
                     OperationSystemId = 1,
                     AvailableStock = 5
                 },
@@ -192,7 +192,7 @@ namespace Catalog.Host.Data
                         IPS
                         Частота обновления экрана
                         120 Гц",
-                    BrandId = 3,
+                    MobileBrandId = 3,
                     OperationSystemId = 1,
                     AvailableStock = 2
                 },
@@ -215,7 +215,7 @@ namespace Catalog.Host.Data
                         IPS
                         Частота обновления экрана
                         60 Гц",
-                    BrandId = 3,
+                    MobileBrandId = 3,
                     OperationSystemId = 1,
                     AvailableStock = 2
                 },
@@ -238,7 +238,7 @@ namespace Catalog.Host.Data
                         IPS
                         Частота обновления экрана
                         60 Гц",
-                    BrandId = 3,
+                    MobileBrandId = 3,
                     OperationSystemId = 1,
                     AvailableStock = 2
                 },
@@ -262,7 +262,7 @@ namespace Catalog.Host.Data
                         OLED
                         Частота обновления экрана
                         144 Гц",
-                    BrandId = 3,
+                    MobileBrandId = 3,
                     OperationSystemId = 1,
                     AvailableStock = 2
                 },
@@ -286,7 +286,7 @@ namespace Catalog.Host.Data
                         IPS
                         Частота обновления экрана
                         144 Гц",
-                    BrandId = 3,
+                    MobileBrandId = 3,
                     OperationSystemId = 1,
                     AvailableStock = 2
                 },
@@ -310,7 +310,7 @@ namespace Catalog.Host.Data
                         LCD
                         Частота обновления экрана
                         90 Гц",
-                    BrandId = 3,
+                    MobileBrandId = 3,
                     OperationSystemId = 1,
                     AvailableStock = 2
                 },
@@ -333,7 +333,7 @@ namespace Catalog.Host.Data
                         P-OLED
                         Материал экрана
                         Стекло",
-                    BrandId = 3,
+                    MobileBrandId = 3,
                     OperationSystemId = 1,
                     AvailableStock = 2
                 }

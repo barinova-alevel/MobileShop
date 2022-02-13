@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Host.Data.Entities
 {
-    public class Mobile : IBaseEntity
+    public class Laptop : IBaseEntity
     {
         public int Id { get; set; }
 
@@ -12,13 +12,13 @@
 
         public string PictureFileName { get; set; } = null!;
 
-        public int MobileBrandId { get; set; }
+        public int LaptopBrandId { get; set; }
 
-        public MobileBrand MobileBrand { get; set; } = null!;
+        public LaptopBrand LaptopBrand { get; set; } = null!;
 
-        public int OperationSystemId { get; set; }
+        public int ScreenTypeId { get; set; }
 
-        public MobileOs OperationSystem { get; set; } = null!;
+        public LaptopScreenType ScreenType { get; set; } = null!;
 
         public int AvailableStock { get; set; }
     }

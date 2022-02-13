@@ -1,9 +1,7 @@
-﻿namespace Catalog.Host.Data.Entities
+﻿namespace Catalog.Host.Models.Requests
 {
-    public class Mobile : IBaseEntity
+    public class CreateMobileRequest
     {
-        public int Id { get; set; }
-
         public string Name { get; set; } = null!;
 
         public string Description { get; set; } = null!;
@@ -12,13 +10,9 @@
 
         public string PictureFileName { get; set; } = null!;
 
-        public int MobileBrandId { get; set; }
-
-        public MobileBrand MobileBrand { get; set; } = null!;
+        public int BrandId { get; set; }
 
         public int OperationSystemId { get; set; }
-
-        public MobileOs OperationSystem { get; set; } = null!;
 
         public int AvailableStock { get; set; }
     }

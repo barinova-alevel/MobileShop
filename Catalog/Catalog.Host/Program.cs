@@ -22,7 +22,11 @@ builder.Services.Configure<CatalogConfig>(configuration);
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDbContextFactory<ApplicationDbContext>(opts => opts.UseNpgsql(configuration["ConnectionString"]));
 builder.Services.AddScoped<IMobileRepository, MobileRepository>();
-builder.Services.AddScoped<ICatalogService, CatalogService>();
+builder.Services.AddScoped<IMobileService, MobileService>();
+builder.Services.AddScoped<ILaptopRepository, LaptopRepository>();
+builder.Services.AddScoped<ILaptopService, LaptopService>();
+builder.Services.AddScoped<ILaptopBrandService, LaptopBrandService>();
+builder.Services.AddScoped<ILaptopBrandRepository, LaptopBrandRepository>();
 builder.Services.AddScoped<IDbContextWrapper<ApplicationDbContext>, DbContextWrapper<ApplicationDbContext>>();
 var app = builder.Build();
 

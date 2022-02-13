@@ -1,9 +1,10 @@
-﻿namespace Catalog.Host.Data.Entities
+﻿namespace Catalog.Host.Models.Dtos
 {
-    public class Brand
+    public class LaptopBrandDto
     {
         public int Id { get; set; }
 
         public string Name { get; set; } = null!;
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Host.Models.Dtos
 {
-    public class MobileDto
+    public class LaptopDto
     {
         public int Id { get; set; }
 
@@ -11,10 +11,10 @@
         public decimal Price { get; set; }
 
         public string PictureUrl { get; set; } = null!;
-        
-        public MobileBrandDto MobileBrand { get; set; } = null!;
 
-        public OperationSystemDto OperationSystem { get; set; } = null!;
+        public LaptopBrandDto LaptopBrand { get; set; } = null!;
+
+        public ScreenTypeDto ScreenType { get; set; } = null!;
 
         public int AvailableStock { get; set; }
     }

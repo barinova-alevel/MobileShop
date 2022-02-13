@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Catalog.Host.Data.EntityConfigurations
 {
-    public class OperationSystemEntityTypeConfiguration : IEntityTypeConfiguration<OperationSystem>
+    public class OperationSystemEntityTypeConfiguration : IEntityTypeConfiguration<MobileOs>
     {
-        public void Configure(EntityTypeBuilder<OperationSystem> builder)
+        public void Configure(EntityTypeBuilder<MobileOs> builder)
         {
             builder.ToTable("OperationSystem");
 

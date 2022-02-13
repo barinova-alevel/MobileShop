@@ -27,9 +27,9 @@ namespace Catalog.Host.Data.EntityConfigurations
             builder.Property(m => m.Description)
                 .IsRequired(false);
 
-            builder.HasOne(m => m.Brand)
+            builder.HasOne(m => m.MobileBrand)
                 .WithMany()
-                .HasForeignKey(m => m.BrandId);
+                .HasForeignKey(m => m.MobileBrandId);
 
             builder.HasOne(m => m.OperationSystem)
                 .WithMany()
