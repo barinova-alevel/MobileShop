@@ -9,7 +9,7 @@ services:
      environment:
         - ASPNETCORE_ENVIRONMENT=Development
         - ASPNETCORE_URLS=http://+:5000
-        - ConnectionString=server=postgres;port=5432;database=mobiles;uid=postgres;password=postgres;;
+        - ConnectionString=server=postgres;port=5432;database=devices;uid=postgres;password=postgres;;
         - PathBase=http://www.alevelwebsite.com:5000
      depends_on:
        - postgres

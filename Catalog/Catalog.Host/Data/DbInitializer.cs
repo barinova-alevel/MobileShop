@@ -4,13 +4,13 @@ namespace Catalog.Host.Data
 {
     public static class DbInitializer
     {
-        public static async Task Initialize(ApplicationDbContext context)
+        public static async Task InitializeMobiles(ApplicationDbContext context)
         {
             await context.Database.EnsureCreatedAsync();
 
             if (!context.MobileBrands.Any())
             {
-                await context.MobileBrands.AddRangeAsync(GetPreconfiguredBrands());
+                await context.MobileBrands.AddRangeAsync(GetPreconfiguredMobileBrands());
 
                 await context.SaveChangesAsync();
             }
@@ -30,7 +30,32 @@ namespace Catalog.Host.Data
             }
         }
 
-        private static IEnumerable<MobileBrand> GetPreconfiguredBrands()
+        public static async Task InitializeLaptops(ApplicationDbContext context)
+        {
+            await context.Database.EnsureCreatedAsync();
+
+            if (!context.LaptopBrands.Any())
+            {
+                await context.LaptopBrands.AddRangeAsync(GetPreconfiguredLaptopBrands());
+
+                await context.SaveChangesAsync();
+            }
+
+            if (!context.ScreenTypes.Any())
+            {
+                await context.ScreenTypes.AddRangeAsync(GetPreconfiguredScreenTypes());
+
+                await context.SaveChangesAsync();
+            }
+
+            if (!context.Laptops.Any())
+            {
+                await context.Laptops.AddRangeAsync(GetPreconfiguredLaptops());
+
+                await context.SaveChangesAsync();
+            }
+        }
+        private static IEnumerable<MobileBrand> GetPreconfiguredMobileBrands()
         {
             return new List<MobileBrand>()
             {
@@ -48,6 +73,21 @@ namespace Catalog.Host.Data
             };
         }
 
+        private static IEnumerable<LaptopBrand> GetPreconfiguredLaptopBrands()
+        {
+            return new List<LaptopBrand>()
+            {
+                new() { Id = 1, Name = "Asus" },
+                new() { Id = 2, Name = "Acer" },
+                new() { Id = 3, Name = "Apple" },
+                new() { Id = 4, Name = "Dell" },
+                new() { Id = 5, Name = "HP"},
+                new() { Id = 6, Name = "Huawei"},
+                new() { Id = 7, Name = "Microsoft"},
+                new() { Id = 8, Name = "Lenovo"}
+            };
+        }
+
         private static IEnumerable<MobileOs> GetPreconfiguredOperationSystems()
         {
             return new List<MobileOs>()
@@ -55,6 +95,23 @@ namespace Catalog.Host.Data
                 new() { Id = 1, Name = "Android" },
                 new() { Id = 2, Name = "BlackBerry" },
                 new() { Id = 3, Name = "iOS" }
+            };
+        }
+
+        private static IEnumerable<LaptopScreenType> GetPreconfiguredScreenTypes()
+        {
+            return new List<LaptopScreenType>()
+            {
+                new() { Id = 1, Name = "AMOLED" },
+                new() { Id = 2, Name = "IPS" },
+                new() { Id = 3, Name = "OLED" },
+                new() { Id = 4, Name = "Retina" },
+                new() { Id = 5, Name = "SVA" },
+                new() { Id = 6, Name = "WVA" },
+                new() { Id = 7, Name = "LTPS" },
+                new() { Id = 8, Name = "TN" },
+                new() { Id = 9, Name = "UWVA" },
+                new() { Id = 10, Name = "VA" }
             };
         }
 
@@ -81,7 +138,7 @@ namespace Catalog.Host.Data
                         IPS",
                     MobileBrandId = 1,
                     OperationSystemId = 3,
-                    AvailableStock = 2                        
+                    AvailableStock = 2
                 },
                 new()
                 {
@@ -336,6 +393,292 @@ namespace Catalog.Host.Data
                     MobileBrandId = 3,
                     OperationSystemId = 1,
                     AvailableStock = 2
+                }
+            };
+        }
+        private static IEnumerable<Laptop> GetPreconfiguredLaptops()
+        {
+            return new List<Laptop>()
+            {
+                new()
+                {
+                    Id = 1,
+                    Name = "HP Pavilion Gaming 15-ec2013ua (4A7M9EA) Shadow Black",
+                    Description = @"Процессор
+                        Шестиядерный AMD Ryzen 5 5600H (3.3 - 4.2 ГГц)
+                        Операционная система
+                        DOS
+                        Выбор языка в предустановленной Windows
+                        украинский",
+                    Price = 24999M,
+                    PictureFileName = "247214370.jpg",
+                    // Description = @"Стандарт связи
+                    LaptopBrandId = 5,
+                    ScreenTypeId = 2,
+                    AvailableStock = 2
+                },
+                new()
+                {
+                    Id = 2,
+                    Name = "ASUS Laptop X415FA-EB013 (90NB0W12-M00150) Slate Grey",
+                    Description = @"Процессор
+                        Двухъядерный Intel Core i3-10110U (2.1 - 4.1 ГГц)
+                        Операционная система
+                        Без ОС
+                        Поколение процессора Intel
+                        10-ое Comet Lake",
+                    Price = 14444M,
+                    PictureFileName = "252123791.jpg",
+                    LaptopBrandId = 1,
+                    ScreenTypeId = 2,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 3,
+                    Name = "Acer Aspire 5 A515-45G-R9ML (NX.A8CEU.00N) Pure Silver",
+                    Description = @"Процессор
+                        Шестиядерный AMD Ryzen 5 5500U (2.1 - 4.0 ГГц)
+                        Операционная система
+                        Без ОС",
+                    Price = 20999M,
+                    PictureFileName = "248481392.jpg",
+                    LaptopBrandId = 2,
+                    ScreenTypeId = 2,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 4,
+                    Name = "ASUS VivoBook 15 OLED M513UA-L1177 (90NB0TP1-M02620) Indie Black",
+                    Description = @"Процессор
+                        Шестиядерный AMD Ryzen 5 5500U (2.1 - 4.0 ГГц)
+                        Операционная система
+                        Без ОС",
+                    Price = 23999M,
+                    PictureFileName = "231724078.jpg",
+                    LaptopBrandId = 1,
+                    ScreenTypeId = 3,
+                    AvailableStock = 2
+                },
+                new()
+                {
+                    Id = 5,
+                    Name = "Lenovo ThinkPad T15g Gen 1 (20UR0030RT) Black",
+                    Description = @"Процессор
+                        Шестиядерный Intel Xeon W-10855M (2.8 - 5.1 ГГц)
+                        Операционная система
+                        Windows 10 Pro 64bit
+                        Поколение процессора Intel
+                        10-ое Comet Lake",
+                    Price = 188243M,
+                    PictureFileName = "175199396.jpg",
+                    LaptopBrandId = 8,
+                    ScreenTypeId = 3,
+                    AvailableStock = 2
+                },
+                new()
+                {
+                    Id = 6,
+                    Name = "HP ZBook Studio G8 (314G8EA) Turbo Silver",
+                    Description = @"Процессор
+                        Восьмиядерный Intel Core i7-11850H (2.5 - 4.8 ГГц)
+                        Операционная система
+                        Windows 10 Pro 64bit
+                        Поколение процессора Intel
+                        11-ое Tiger Lake",
+                    Price = 121599M,
+                    PictureFileName = "240968284.jpg",
+                    LaptopBrandId = 5,
+                    ScreenTypeId = 3,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 7,
+                    Name = "Apple MacBook Air 13 M1 256GB 2020 (MGN63) Space Gray",
+                    Description = @"Процессор
+                        Восьмиядерный Apple M1
+                        Операционная система
+                        macOS Big Sur",
+                    Price = 33999M,
+                    PictureFileName = "144249716.jpg",
+                    LaptopBrandId = 3,
+                    ScreenTypeId = 4,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 8,
+                    Name = "Apple MacBook Pro 13 M1 256GB 2020 (Z11B000Q8) Custom Space Gray",
+                    Description = @"Процессор
+                        Восьмиядерный Apple M1
+                        Операционная система
+                        macOS Big Sur
+                        ",
+                    Price = 55499M,
+                    PictureFileName = "175329107.jpg",
+                    LaptopBrandId = 3,
+                    ScreenTypeId = 4,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 9,
+                    Name = "HP 250 G8 (2W9A7EA) Asteroid Silver",
+                    Description = @"Процессор
+                        Двухъядерный Intel Core i3-1115G4 (3.0 - 4.1 ГГц)
+                        Операционная система
+                        Windows 10 Pro 64bit
+                        Поколение процессора Intel
+                        11-ое Tiger Lake",
+                    Price = 23999M,
+                    PictureFileName = "183731943.jpg",
+                    LaptopBrandId = 5,
+                    ScreenTypeId = 5,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 10,
+                    Name = "Dell Latitude 5420 (N005L542014UA_WP) Silver",
+                    Description = @"Процессор
+                        Четырехъядерный Intel Core i5-1135G7 (2.4 - 4.2 ГГц)
+                        Операционная система
+                        Windows 10 Pro 64bit
+                        Поколение процессора Intel
+                        11-ое Tiger Lake",
+                    Price = 38052M,
+                    PictureFileName = "194685288.jpg",
+                    LaptopBrandId = 4,
+                    ScreenTypeId = 6,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 11,
+                    Name = "Dell Vostro 5510 (N5111VN5510UA01_2201_UBU) Titan Grey",
+                    Description = @"Процессор
+                        Четырехъядерный Intel Core i5-11300H (2.6 - 4.4 ГГц)
+                        Операционная система
+                        Ubuntu
+                        Поколение процессора Intel
+                        11-ое Tiger Lake
+                        Диагональ экрана
+                        15.6 (1920x1080) Full HD
+                        Тип экрана
+                        WVA
+                        Частота обновления экрана
+                        60 Гц",
+                    Price = 27399M,
+                    PictureFileName = "196193058.jpg",
+                    LaptopBrandId = 4,
+                    ScreenTypeId = 6,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 12,
+                    Name = "Huawei MateBook 14s (53012LVG) Space Gray",
+                    Description = @"Процессор
+                        Четырехъядерный Intel Core i5-11300H (2.6 - 4.4 ГГц)
+                        Операционная система
+                        Windows 10 Home 64bit
+                        Поколение процессора Intel
+                        11-ое Tiger Lake
+                        Выбор языка в предустановленной Windows
+                        украинский, русский
+                        Диагональ экрана
+                        14.2 (2520x1680) Multitouch
+                        Тип экрана
+                        LTPS
+                        Частота обновления экрана
+                        60 Гц",
+                    Price = 27999M,
+                    PictureFileName = "242663618.jpg",
+                    LaptopBrandId = 6,
+                    ScreenTypeId = 7,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 13,
+                    Name = "Lenovo IdeaPad 3 15IML05 (81WB011FRA) Business Black",
+                    Description = @"Процессор
+                        Двухъядерный Intel Pentium Gold 6405U (2.4 ГГц)
+                        Операционная система
+                        Без ОС
+                        Диагональ экрана
+                        15.6 (1920x1080) Full HD
+                        Тип экрана
+                        TN
+                        Частота обновления экрана
+                        60 Гц",
+                    Price = 15299M,
+                    PictureFileName = "251846125.jpg",
+                    LaptopBrandId = 8,
+                    ScreenTypeId = 8,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 14,
+                    Name = "HP EliteBook 8470P 14.0 HD Core I7 SSD 180 GB БУ",
+                    Description = @"Процессор
+                        Двухъядерный Intel Core i7-3520M (2.9 ГГц)
+                        Операционная система
+                        Windows 10 Home
+                        Поколение процессора Intel
+                        3-е Ivy Bridge
+                        Выбор языка в предустановленной Windows
+                        Диагональ экрана
+                        14.1 (1366х768) WXGA HD
+                        Тип экрана
+                        UWVA",
+                    Price = 7770M,
+                    PictureFileName = "242628909.jpg",
+                    LaptopBrandId = 5,
+                    ScreenTypeId = 9,
+                    AvailableStock = 1
+                },
+                new()
+                {
+                    Id = 15,
+                    Name = "Dell Latitude 5310 (N004L531013UA_WP)",
+                    Description = @"Количество слотов для оперативной памяти
+                        2
+                        Тип экрана
+                        VA
+                        Частота обновления экрана
+                        60 Гц
+                        Встроенная камера
+                        WEB-Camera",
+                    Price = 39888M,
+                    PictureFileName = "227154202.jpg",
+                    LaptopBrandId = 4,
+                    ScreenTypeId = 10,
+                    AvailableStock = 2
+                },
+                new()
+                {
+                    Id = 16,
+                    Name = "Microsoft Surface Laptop Go - 12.4- Core i5 - 8 GB Ram - 256 GB SSD (THJ-00001) Platinum",
+                    Description = @"Процессор
+                        Двухъядерный Intel Core i7-3520M (2.9 ГГц)
+                        Операционная система
+                        Windows 10 Home
+                        Поколение процессора Intel
+                        3-е Ivy Bridge
+                        Выбор языка в предустановленной Windows
+                        Диагональ экрана
+                        14.1 (1366х768) WXGA HD
+                        Тип экрана
+                        UWVA",
+                    Price = 26207M,
+                    PictureFileName = "9859612.jpg",
+                    LaptopBrandId = 7,
+                    ScreenTypeId = 2,
+                    AvailableStock = 1
                 }
             };
         }

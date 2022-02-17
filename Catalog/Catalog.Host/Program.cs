@@ -23,6 +23,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDbContextFactory<ApplicationDbContext>(opts => opts.UseNpgsql(configuration["ConnectionString"]));
 builder.Services.AddScoped<IMobileRepository, MobileRepository>();
 builder.Services.AddScoped<IMobileService, MobileService>();
+builder.Services.AddScoped<IMobileBrandService, MobileBrandService>();
+builder.Services.AddScoped<IMobileBrandRepository, MobileBrandRepository>();
 builder.Services.AddScoped<ILaptopRepository, LaptopRepository>();
 builder.Services.AddScoped<ILaptopService, LaptopService>();
 builder.Services.AddScoped<ILaptopBrandService, LaptopBrandService>();
@@ -65,7 +67,7 @@ void CreateDbIfNotExists(IHost host)
         {
             var context = services.GetRequiredService<ApplicationDbContext>();
 
-            DbInitializer.Initialize(context).Wait();
+            DbInitializer.InitializeMobiles(context).Wait();
         }
         catch (Exception ex)
         {

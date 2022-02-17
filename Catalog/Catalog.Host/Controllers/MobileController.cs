@@ -37,5 +37,13 @@ namespace Catalog.Host.Controllers
             var result = await _mobileService.UpdateAsync(request.Id, request.Name, request.Description, request.Price, request.PictureFileName, request.BrandId, request.OperationSystemId, request.AvailableStock);
             return Ok(new AddItemResponse<int?>() { Id = result });
         }
+
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        public async Task<ActionResult> Delete(IdRequest request)
+        {
+            await _mobileService.RemoveAsync(request.Id);
+            return NoContent();
+        }
     }
 }
