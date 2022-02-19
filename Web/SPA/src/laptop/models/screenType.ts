@@ -1,4 +1,4 @@
 export interface ScreenType {
-    id: string;
+    id: number;
     name: string;
 }

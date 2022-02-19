@@ -4,13 +4,16 @@ import { types } from "../../ioc";
 import { Mobile, MobileFilter } from "../models/mobile";
 import MobileService from "../services/MobileService";
 
+const DEFAULT_PAGE = 1;
+
 @injectable()
 export default class MobilesStore {
     @observable mobiles : Mobile[] = [];
 
     @observable isLoading = false;
     @observable totalPages = 0;
-    @observable currentPage = 1;
+    @observable currentPage = DEFAULT_PAGE;
+    @observable filter?: MobileFilter;
 
     @inject(types.mobileService) 
     private readonly mobileService!: MobileService;
@@ -26,7 +29,14 @@ export default class MobilesStore {
     @action
     public changePage = async (page: number) => {
         this.currentPage = page;
-        this.getByPage(page);
+        this.getByPage(page, this.filter);
+    }
+
+    @action
+    public changeFilter = async (filter: MobileFilter) => {
+        this.filter = filter;
+        this.currentPage = DEFAULT_PAGE;
+        this.getByPage(DEFAULT_PAGE, filter);
     }
 
     private getByPage = async (page: number, filter?: MobileFilter) => {

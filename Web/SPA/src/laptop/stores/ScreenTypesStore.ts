@@ -6,11 +6,11 @@ import LaptopService from "../services/LaptopService";
 
 @injectable()
 export default class ScreenTypesStore {
-    @observable os: ScreenType[] = [];
+    @observable screenTypes: ScreenType[] = [];
     @observable isLoading = false;
 
-    @inject(types.mobileService)
-    private readonly mobileService!: LaptopService;
+    @inject(types.laptopService)
+    private readonly laptopService!: LaptopService;
     constructor() {
         makeObservable(this);
     }
@@ -20,7 +20,7 @@ export default class ScreenTypesStore {
         this.isLoading = true;
 
         try {
-            this.os = await this.mobileService.getScreenTypes();
+            this.screenTypes = await this.laptopService.getScreenTypes();
         } catch (e) {
             if (e instanceof Error) {
                 console.error(e.message);

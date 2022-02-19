@@ -1,17 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { useCallback } from "react";
 import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Device } from "../models/Device";
 import AddToBasketButton from "./AddToBasketButton";
 import Pagination from "./Pagination";
 import { Price } from "./Utils";
-
-export interface Device {
-    id: number,
-    name: string,
-    price: number,
-    pictureUrl: string,
-    description: string;
-}
 
 type Props = {
     devices?: Device[];
@@ -37,6 +30,9 @@ const DeviceList = observer((props: Props) => {
                             />}
                         </Col>
                     ))}
+                    {
+                        !props.devices?.length && <span>No corresponding device found. Try to change filter.</span>
+                    }
                 </>
             )}
         </Row>
@@ -72,7 +68,7 @@ const DeviceCard = (props: CardProps) => {
                     <div>
                         <Price value={price} />
                     </div>
-                    {/* <AddToBasketButton product={props.product} /> */}
+                    <AddToBasketButton device={props.device} />
                 </div>
             </Card.Body>
         </Card>

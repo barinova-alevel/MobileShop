@@ -69,5 +69,15 @@ namespace Catalog.Host.Services
             };
         }
 
+        public async Task<LaptopDto?> GetById(int id)
+        {
+            var laptop = await _laptopRepository.GetById(id);
+            if (laptop == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<LaptopDto>(laptop);
+        }
     }
 }

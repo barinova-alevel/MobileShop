@@ -4,13 +4,16 @@ import { types } from "../../ioc";
 import { Laptop, LaptopFilter } from "../models/laptop";
 import LaptopService from "../services/LaptopService";
 
+const DEFAULT_PAGE = 1;
+
 @injectable()
 export default class LaptopsStore {
     @observable mobiles: Laptop[] = [];
 
     @observable isLoading = false;
     @observable totalPages = 0;
-    @observable currentPage = 1;
+    @observable currentPage = DEFAULT_PAGE;
+    @observable filter?: LaptopFilter;
 
     @inject(types.laptopService)
     private readonly laptopService!: LaptopService;
@@ -26,7 +29,14 @@ export default class LaptopsStore {
     @action
     public changePage = async (page: number) => {
         this.currentPage = page;
-        this.getByPage(page);
+        this.getByPage(page, this.filter);
+    }
+
+    @action
+    public changeFilter = async (filter: LaptopFilter) => {
+        this.filter = filter;
+        this.currentPage = DEFAULT_PAGE;
+        this.getByPage(DEFAULT_PAGE, filter);
     }
 
     @action

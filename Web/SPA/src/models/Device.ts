@@ -1,4 +1,4 @@
-export interface Product {
+export interface Device {
     id: number,
     name: string,
     price: number,

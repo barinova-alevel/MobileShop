@@ -2,10 +2,8 @@ import { useEffect } from 'react';
 import "reflect-metadata";
 import { Badge, Container, Nav, Navbar, NavbarBrand, NavLink } from 'react-bootstrap';
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
-import Catalog from './containers/Catalog';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import ProductDetails from './components/ProductDetails';
 import Login from './pages/Login';
 import LoginStore from './stores/LoginStore';
 import ownTypes from './ioc/ownTypes';
@@ -18,8 +16,10 @@ import logo from './images/icon.png'
 import './App.css'
 import './locales/config';
 import { Icon } from './components/Utils';
-import MobileList from './mobile/MobileList';
-import LaptopList from './laptop/LaptopList';
+import MobileList from './mobile/components/MobileList';
+import LaptopList from './laptop/components/LaptopList';
+import MobileDetails from './mobile/components/MobileDetails';
+import LaptopDetails from './laptop/components/LaptopDetails';
 
 function App() {
   const loginStore = useInjection<LoginStore>(ownTypes.loginStore);
@@ -34,10 +34,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route path="" element={<MobileList />} />
-          <Route path="product/:id" element={<ProductDetails />} />
           <Route path="basket" element={<Basket />} />
           <Route path="mobile" element={<MobileList />} />
+          <Route path="mobile/:id" element={<MobileDetails />} />
           <Route path="laptop" element={<LaptopList />} />
+          <Route path="laptop/:id" element={<LaptopDetails />} />
           <Route path="login" element={<Login />} />
         </Route>
       </Routes>
@@ -63,12 +64,7 @@ function Layout() {
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <LinkContainer to="/">
-                  <NavLink>Catalog</NavLink>
-                </LinkContainer>
-              </Nav>
-              <Nav className="me-auto">
+              <Nav>
                 <LinkContainer to="/mobile">
                   <NavLink>Mobile</NavLink>
                 </LinkContainer>

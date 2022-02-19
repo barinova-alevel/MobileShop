@@ -1,11 +1,10 @@
 import { inject, injectable } from "inversify";
 import { action, autorun, makeAutoObservable } from "mobx";
 import { types } from "../ioc";
-import { Product } from "../models/Product";
-import CatalogService from "../services/CatalogService";
+import { Device } from "../models/Device";
 
 export interface BasketItem {
-    product: Product;
+    product: Device;
     count: number;
 }
 
@@ -21,8 +20,8 @@ export default class BasketStore {
 
     private _initialized = false;
 
-    @inject(types.catalogService)
-    private readonly catalogService!: CatalogService;
+    // @inject(types.catalogService)
+    // private readonly catalogService!: CatalogService;
 
     constructor() {
         makeAutoObservable(this);
@@ -34,7 +33,7 @@ export default class BasketStore {
     }
 
     @action
-    public addToBasket = (product: Product) => {
+    public addToBasket = (product: Device) => {
         const basketItem = this.basket.find(_ => _.product.id == product.id)
         if (basketItem == null) {
             this.basket.push({ product: product, count: 1 })
@@ -44,7 +43,7 @@ export default class BasketStore {
     }
 
     @action
-    public removeFromBasket = (product: Product) => {
+    public removeFromBasket = (product: Device) => {
         this.basket = this.basket.filter(_ => _.product.id !== product.id)
     }
 
@@ -58,17 +57,17 @@ export default class BasketStore {
 
     @action
     public restoreBasket = async () => {
-        const basketStr = localStorage.getItem(this.basketKey)
-        if (!basketStr) return
+    //     const basketStr = localStorage.getItem(this.basketKey)
+    //     if (!basketStr) return
 
-        const basketItems: BasketModel = JSON.parse(basketStr)
-        const products = await this.catalogService.getByIds(basketItems.map(_ => _.id));
+    //     const basketItems: BasketModel = JSON.parse(basketStr)
+    //  //   const products = await this.catalogService.getByIds(basketItems.map(_ => _.id));
 
-        this.basket = products.map(_ => ({
-            product: _,
-            count: basketItems.find(i => i.count)?.count || 0
-        }))
-        this._initialized = true
+    //     this.basket = products.map(_ => ({
+    //         product: _,
+    //         count: basketItems.find(i => i.count)?.count || 0
+    //     }))
+    //     this._initialized = true
     }
 
     @action
@@ -86,7 +85,7 @@ export default class BasketStore {
        this.basket = []
     }
 
-    public isInBasket = (product: Product) => {
+    public isInBasket = (product: Device) => {
         return this.basket.find(_ => _.product.id == product.id);
     }
 

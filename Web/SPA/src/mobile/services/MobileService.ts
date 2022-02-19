@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import { injectable } from "inversify";
-import { Product } from "../../models/Product";
 import { Brand } from "../models/brand";
 import { OperationSystem } from "../models/os";
 import { post } from "../../fetch-utils";
@@ -28,6 +27,6 @@ export default class MobileService {
     }
 
     public getOS(): Promise<OperationSystem[]> {
-        return post<Brand[]>(CatalogAPI.Mobile.getOS, {});
+        return post<OperationSystem[]>(CatalogAPI.Mobile.getOS, {});
     }
 }

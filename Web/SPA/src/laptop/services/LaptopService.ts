@@ -23,7 +23,7 @@ export default class LaptopService {
     }
 
     public getBrands(): Promise<Brand[]> {
-        return post<Brand[]>(CatalogAPI.Mobile.getBrands, {});
+        return post<Brand[]>(CatalogAPI.Laptop.getBrands, {});
     }
 
     public getScreenTypes(): Promise<ScreenType[]> {

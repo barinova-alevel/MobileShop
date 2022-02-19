@@ -1,25 +1,19 @@
-import { useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { observer } from 'mobx-react-lite'
-import { useInjection } from '../../ioc/ioc.react'
-import ownTypes from '../../ioc/ownTypes'
-import ProductStore from '../../stores/ProductStore'
-import { useParams } from 'react-router-dom'
-import AddToBasketButton from '../AddToBasketButton'
-import { Price } from '../Utils'
+import AddToBasketButton from './AddToBasketButton'
+import { Price } from './Utils'
+import { Device } from '../models/Device'
 
-const ProductDetails = observer(() => {
-    const store = useInjection<ProductStore>(ownTypes.productStore);
-    let params = useParams<{ id: string }>();
-    useEffect(() => {
-        store.init(+params.id!);
-    }, [store, params.id])
+type Props = {
+    device?: Device;
+}
 
-    if (!store.product) {
+const DeviceDetails = observer((props: Props) => {
+    if (!props.device) {
         return null;
     }
 
-    const { name, price, pictureUrl: avatar, description } = store.product
+    const { name, price, pictureUrl: avatar, description } = props.device
     return (
         <Container>
             <Row>
@@ -38,7 +32,7 @@ const ProductDetails = observer(() => {
                             </div>
                             <div className='d-flex mt-4'>
                                 <Price className="me-auto" value={price} />
-                                <AddToBasketButton product={store.product} />
+                                <AddToBasketButton device={props.device} />
                             </div>
                         </div>
                     </div>
@@ -48,4 +42,4 @@ const ProductDetails = observer(() => {
     )
 });
 
-export default ProductDetails
+export default DeviceDetails

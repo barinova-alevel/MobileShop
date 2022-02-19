@@ -14,5 +14,5 @@ export interface Mobile {
 
 export type MobileFilter = {
     mobileBrandId?: number;
-    OperationSystemId?: number;
+    operationSystemId?: number;
 }

@@ -35,6 +35,19 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(MobileDto), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Laptop(IdRequest request)
+        {
+            var result = await _laptopService.GetById(request.Id!.Value);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPost]
         [ProducesResponseType(typeof(List<LaptopBrandDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Brands()
         {
