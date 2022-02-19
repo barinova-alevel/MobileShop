@@ -8,14 +8,14 @@ using System.Net;
 
 namespace Catalog.Host.Controllers
 {
-    [Route(ComponentDefaults.DefaultRoute)]
     [ApiController]
-    public class BrandController : ControllerBase
+    [Route(ComponentDefaults.DefaultRoute)]
+    public class LaptopBrandController : ControllerBase
     {
-        private readonly IMobileBrandService _brandService;
-        private readonly ILogger<BrandController> _logger;
+        private readonly ILaptopBrandService _brandService;
+        private readonly ILogger<LaptopBrandController> _logger;
 
-        public BrandController(IMobileBrandService brandService, ILogger<BrandController> logger)
+        public LaptopBrandController(ILaptopBrandService brandService, ILogger<LaptopBrandController> logger)
         {
             this._brandService = brandService;
             _logger = logger;
@@ -33,7 +33,7 @@ namespace Catalog.Host.Controllers
         [ProducesResponseType(typeof(AddItemResponse<int?>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Update(UpdateBrandRequest request)
         {
-            var result = await _brandService.UpdateAsync(request.Id, request.Name);
+            var result = await _brandService.UpdateAsync(request.Id!.Value, request.Name);
             return Ok(new AddItemResponse<int?>() { Id = result });
         }
 
@@ -41,8 +41,9 @@ namespace Catalog.Host.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<ActionResult> Delete(IdRequest request)
         {
-            await _brandService.RemoveAsync(request.Id);
+            await _brandService.RemoveAsync(request.Id!.Value);
             return NoContent();
         }
+
     }
 }

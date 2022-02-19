@@ -7,8 +7,8 @@ using System.Net;
 
 namespace Catalog.Host.Controllers
 {
-    [Route(ComponentDefaults.DefaultRoute)]
     [ApiController]
+    [Route(ComponentDefaults.DefaultRoute)]
     public class MobileController : ControllerBase
     {
         private readonly ILogger<MobileController> _logger;
@@ -26,7 +26,13 @@ namespace Catalog.Host.Controllers
         [ProducesResponseType(typeof(AddItemResponse<int?>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Add(CreateMobileRequest request)
         {
-            var result = await _mobileService.AddAsync(request.Name, request.Description, request.Price, request.PictureFileName, request.BrandId, request.OperationSystemId, request.AvailableStock);
+            var result = await _mobileService.AddAsync(request.Name, 
+                request.Description, 
+                request.Price!.Value, 
+                request.PictureFileName, 
+                request.BrandId!.Value, 
+                request.OperationSystemId!.Value,
+                request.AvailableStock);
             return Ok(new AddItemResponse<int?>() { Id = result });
         }
 
@@ -34,7 +40,14 @@ namespace Catalog.Host.Controllers
         [ProducesResponseType(typeof(AddItemResponse<int?>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Update(UpdateMobileRequest request)
         {
-            var result = await _mobileService.UpdateAsync(request.Id, request.Name, request.Description, request.Price, request.PictureFileName, request.BrandId, request.OperationSystemId, request.AvailableStock);
+            var result = await _mobileService.UpdateAsync(request.Id!.Value, 
+                request.Name, 
+                request.Description, 
+                request.Price!.Value, 
+                request.PictureFileName,
+                request.BrandId!.Value, 
+                request.OperationSystemId!.Value, 
+                request.AvailableStock);
             return Ok(new AddItemResponse<int?>() { Id = result });
         }
 
@@ -42,7 +55,7 @@ namespace Catalog.Host.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<ActionResult> Delete(IdRequest request)
         {
-            await _mobileService.RemoveAsync(request.Id);
+            await _mobileService.RemoveAsync(request.Id!.Value);
             return NoContent();
         }
     }

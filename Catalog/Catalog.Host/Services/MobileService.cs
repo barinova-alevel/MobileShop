@@ -67,5 +67,16 @@ namespace Catalog.Host.Services
                 PageSize = pageSize
             };
         }
+
+        public async Task<MobileDto?> GetById(int id)
+        {
+            var mobile = await _mobileRepository.GetById(id);
+            if (mobile == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<MobileDto>(mobile);
+        }
     }
 }

@@ -1,7 +1,10 @@
-﻿namespace Catalog.Host.Models.Requests
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Catalog.Host.Models.Requests
 {
     public class IdRequest
     {
-        public int Id { get; set; }
+        [Required]
+        public int? Id { get; set; }
     }
 }

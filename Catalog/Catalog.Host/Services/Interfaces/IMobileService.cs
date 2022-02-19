@@ -1,5 +1,4 @@
-﻿using Catalog.Host.Data.Entities;
-using Catalog.Host.Models.Dtos;
+﻿using Catalog.Host.Models.Dtos;
 using Catalog.Host.Models.Response;
 
 namespace Catalog.Host.Services.Interfaces
@@ -10,6 +9,6 @@ namespace Catalog.Host.Services.Interfaces
         Task<int?> UpdateAsync(int id, string name, string description, decimal price, string pictureFileName, int brandId, int operationSystemId, int availableStock);
         Task<int?> RemoveAsync(int id);
         Task<PaginatedItemsResponse<MobileDto>?> GetMobileAsync(MobileFilter filter, int pageSize, int pageIndex);
-
+        Task<MobileDto?> GetById(int id);
     }
 }

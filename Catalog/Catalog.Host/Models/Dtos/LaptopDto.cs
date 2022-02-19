@@ -14,7 +14,7 @@
 
         public LaptopBrandDto LaptopBrand { get; set; } = null!;
 
-        public ScreenTypeDto ScreenType { get; set; } = null!;
+        public LaptopScreenTypeDto ScreenType { get; set; } = null!;
 
         public int AvailableStock { get; set; }
     }

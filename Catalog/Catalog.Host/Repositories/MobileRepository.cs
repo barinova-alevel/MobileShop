@@ -57,6 +57,7 @@ namespace Catalog.Host.Repositories
 
             return mobile.Id;
         }
+
         public async Task<Mobile?> GetById(int id)
         {
             return await _dbContext.Mobiles
@@ -64,6 +65,7 @@ namespace Catalog.Host.Repositories
                 .Include(i => i.OperationSystem)
                 .FirstOrDefaultAsync(_ => _.Id == id);
         }
+
         public Task<int?> Remove(int id)
         {
             return RepositoryHelper.Remove<Mobile>(_dbContext, id);

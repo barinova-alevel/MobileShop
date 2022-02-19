@@ -9,12 +9,12 @@ namespace Catalog.Host.Controllers
 {
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
-    public class OperationSystemController : ControllerBase
+    public class MobileOsController : ControllerBase
     {
         private readonly IMobileOsService _osService;
-        private readonly ILogger<OperationSystemController> _logger;
+        private readonly ILogger<MobileOsController> _logger;
 
-        public OperationSystemController(IMobileOsService osService, ILogger<OperationSystemController> logger)
+        public MobileOsController(IMobileOsService osService, ILogger<MobileOsController> logger)
         {
             this._osService = osService;
             _logger = logger;
@@ -32,7 +32,7 @@ namespace Catalog.Host.Controllers
         [ProducesResponseType(typeof(AddItemResponse<int?>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Update(UpdateOperationSystemRequest request)
         {
-            var result = await _osService.UpdateAsync(request.Id, request.Name);
+            var result = await _osService.UpdateAsync(request.Id!.Value, request.Name);
             return Ok(new AddItemResponse<int?>() { Id = result });
         }
 
@@ -40,7 +40,7 @@ namespace Catalog.Host.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<ActionResult> Delete(IdRequest request)
         {
-            await _osService.RemoveAsync(request.Id);
+            await _osService.RemoveAsync(request.Id!.Value);
             return NoContent();
         }
     }

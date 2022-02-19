@@ -16,7 +16,9 @@ services:
      ports:
        - 5000:5000
    nginx:
-     image: nginx
+     build:
+       context: .
+       dockerfile: Web/SPA/Dockerfile
      container_name: lde.nginx
      ports:
        - 80:80

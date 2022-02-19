@@ -12,12 +12,12 @@ public class MappingProfile : Profile
             .ForMember(_ => _.PictureUrl, opt
                 => opt.MapFrom<MobilePictureResolver, string>(c => c.PictureFileName));
         CreateMap<MobileBrand, MobileBrandDto>();
-        CreateMap<MobileOs, OperationSystemDto>();
+        CreateMap<MobileOs, MobileOsDto>();
 
         CreateMap<Laptop, LaptopDto>()
             .ForMember(_ => _.PictureUrl, opt
                 => opt.MapFrom<LaptopPictureResolver, string>(c => c.PictureFileName));
         CreateMap<LaptopBrand, LaptopBrandDto>();
-        CreateMap<LaptopScreenType, ScreenTypeDto>();
+        CreateMap<LaptopScreenType, LaptopScreenTypeDto>();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Catalog.Host.Data;
 using Catalog.Host.Data.Entities;
 using Infrastructure.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Host.Repositories
 {
@@ -42,6 +43,11 @@ namespace Catalog.Host.Repositories
         public Task<int?> Remove(int id)
         {
             return RepositoryHelper.Remove<MobileOs>(_dbContext, id);
+        }
+
+        public Task<List<MobileOs>> GetAllAsync()
+        {
+            return _dbContext.OperationSystems.ToListAsync();
         }
     }
 }

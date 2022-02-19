@@ -1,0 +1,45 @@
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+.text-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+body {
+  padding-top: 70px;
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+table input {
+  width: 100%;
+}
+
+img {
+  object-fit: contain;
+}
+
+.page-item .page-link {
+  color: black;
+  background-color: white;
+  border-color: silver;
+}
+
+.page-item.active .page-link {
+  background-color: silver;
+  border-color: silver;
+}
+.page-link:focus {
+  box-shadow: 0 0 0 0.25rem rgb(192 192 192 / 25%);
+}
+.small-badge {
+  font-size: 8px;
+  vertical-align: top;
+}

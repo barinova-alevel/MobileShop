@@ -2,6 +2,7 @@
 using Catalog.Host.Data.Entities;
 using Catalog.Host.Repositories.Interfaces;
 using Infrastructure.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Host.Repositories
 {
@@ -43,6 +44,11 @@ namespace Catalog.Host.Repositories
         public Task<int?> Remove(int id)
         {
             return RepositoryHelper.Remove<LaptopScreenType>(_dbContext, id);
+        }
+
+        public Task<List<LaptopScreenType>> GetAllAsync()
+        {
+            return _dbContext.ScreenTypes.ToListAsync();
         }
     }
 }

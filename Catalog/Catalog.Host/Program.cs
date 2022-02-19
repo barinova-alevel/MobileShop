@@ -11,6 +11,15 @@ using Microsoft.EntityFrameworkCore;
 var configuration = GetConfiguration();
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    );
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -25,11 +34,16 @@ builder.Services.AddScoped<IMobileRepository, MobileRepository>();
 builder.Services.AddScoped<IMobileService, MobileService>();
 builder.Services.AddScoped<IMobileBrandService, MobileBrandService>();
 builder.Services.AddScoped<IMobileBrandRepository, MobileBrandRepository>();
+builder.Services.AddScoped<IMobileOsRepository, MobileOsRepository>();
+builder.Services.AddScoped<IMobileOsService, MobileOsService>();
 builder.Services.AddScoped<ILaptopRepository, LaptopRepository>();
 builder.Services.AddScoped<ILaptopService, LaptopService>();
 builder.Services.AddScoped<ILaptopBrandService, LaptopBrandService>();
 builder.Services.AddScoped<ILaptopBrandRepository, LaptopBrandRepository>();
+builder.Services.AddScoped<ILaptopScreenTypeRepository, LaptopScreenTypeRepository>();
+builder.Services.AddScoped<ILaptopScreenTypeService, LaptopScreenTypeService>();
 builder.Services.AddScoped<IDbContextWrapper<ApplicationDbContext>, DbContextWrapper<ApplicationDbContext>>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,6 +54,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 
@@ -68,6 +84,7 @@ void CreateDbIfNotExists(IHost host)
             var context = services.GetRequiredService<ApplicationDbContext>();
 
             DbInitializer.InitializeMobiles(context).Wait();
+            DbInitializer.InitializeLaptops(context).Wait();
         }
         catch (Exception ex)
         {

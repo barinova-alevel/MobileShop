@@ -14,7 +14,7 @@
         
         public MobileBrandDto MobileBrand { get; set; } = null!;
 
-        public OperationSystemDto OperationSystem { get; set; } = null!;
+        public MobileOsDto OperationSystem { get; set; } = null!;
 
         public int AvailableStock { get; set; }
     }

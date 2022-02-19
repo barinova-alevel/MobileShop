@@ -14,14 +14,16 @@ namespace Catalog.Host.Controllers
     {
         private readonly ILaptopService _laptopService;
         private readonly ILaptopBrandService _brandService;
+        private readonly ILaptopScreenTypeService _screenTypeService;
 
         public LaptopBffController(
         ILaptopService laptopService,
-        ILaptopBrandService brandService
-            )
+        ILaptopBrandService brandService,
+        ILaptopScreenTypeService screenTypeService)
         {
             _laptopService = laptopService;
             this._brandService = brandService;
+            _screenTypeService = screenTypeService;
         }
 
         [HttpPost]
@@ -37,6 +39,14 @@ namespace Catalog.Host.Controllers
         public async Task<IActionResult> Brands()
         {
             var result = await _brandService.GetAllAsync();
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(List<LaptopScreenTypeDto>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> ScreenTypes()
+        {
+            var result = await _screenTypeService.GetAllAsync();
             return Ok(result);
         }
     }

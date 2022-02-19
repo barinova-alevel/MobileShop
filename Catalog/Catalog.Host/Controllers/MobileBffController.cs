@@ -13,13 +13,16 @@ namespace Catalog.Host.Controllers
     public class MobileBffController : ControllerBase
     {
         private readonly IMobileService _mobileService;
-        private readonly IMobileBrandService _brandService;
+        private readonly IMobileBrandService _mobileBrandService;
+        private IMobileOsService _mobileOsService;
         public MobileBffController(
         IMobileService mobileService,
-        IMobileBrandService brandService)
+        IMobileBrandService brandService,
+        IMobileOsService mobileOsService)
         {
             _mobileService = mobileService;
-            this._brandService = brandService;
+            _mobileBrandService = brandService;
+            _mobileOsService = mobileOsService;
         }
 
         [HttpPost]
@@ -31,10 +34,31 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(MobileDto), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Mobile(IdRequest request)
+        {
+            var result = await _mobileService.GetById(request.Id!.Value);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPost]
         [ProducesResponseType(typeof(List<MobileBrandDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Brands()
         {
-            var result = await _brandService.GetAllAsync();
+            var result = await _mobileBrandService.GetAllAsync();
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(List<MobileOsDto>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> OperationSystems()
+        {
+            var result = await _mobileOsService.GetAllAsync();
             return Ok(result);
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Host.Models.Dtos
 {
-    public class OperationSystemDto
+    public class MobileOsDto
     {
         public int Id { get; set; }
 
