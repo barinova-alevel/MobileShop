@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{06CCE973-094F-4E48-951A-8A2BA7E93180}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
+		settings.ruleset = settings.ruleset
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{14B7D279-0038-4D29-912C-4F90557625A7}"
@@ -35,6 +36,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{04A0C8D1-78E
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "SPA", "Web\SPA\SPA.esproj", "{71941179-CFE3-40A1-A687-3FC6E746BA7E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{AA074B85-82EB-497E-8684-318D0B4B5F54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityServer\IdentityServer\IdentityServer.csproj", "{7B4A1FBB-DBEB-4B7B-8A86-936EE147168C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{AE641CFC-8AFA-466F-9024-2437B01C5B11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Host", "Basket\Basket.Host\Basket.Host.csproj", "{C259D07D-D344-4722-ABE9-FCABE82885FA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.UnitTests", "Basket\Basket.UnitTests\Basket.UnitTests.csproj", "{632E4062-793F-4068-AA2C-F0F20EF65136}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +66,18 @@ Global
 		{71941179-CFE3-40A1-A687-3FC6E746BA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71941179-CFE3-40A1-A687-3FC6E746BA7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71941179-CFE3-40A1-A687-3FC6E746BA7E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7B4A1FBB-DBEB-4B7B-8A86-936EE147168C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B4A1FBB-DBEB-4B7B-8A86-936EE147168C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B4A1FBB-DBEB-4B7B-8A86-936EE147168C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B4A1FBB-DBEB-4B7B-8A86-936EE147168C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C259D07D-D344-4722-ABE9-FCABE82885FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C259D07D-D344-4722-ABE9-FCABE82885FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C259D07D-D344-4722-ABE9-FCABE82885FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C259D07D-D344-4722-ABE9-FCABE82885FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{632E4062-793F-4068-AA2C-F0F20EF65136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{632E4062-793F-4068-AA2C-F0F20EF65136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{632E4062-793F-4068-AA2C-F0F20EF65136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{632E4062-793F-4068-AA2C-F0F20EF65136}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +91,9 @@ Global
 		{830B4D2A-E87C-4377-9745-F535E4D00D87} = {BAD58210-4B49-49E9-B17C-D84A7C7BFD6F}
 		{549B2585-3A9C-4693-9B76-92D08635B7B3} = {830B4D2A-E87C-4377-9745-F535E4D00D87}
 		{71941179-CFE3-40A1-A687-3FC6E746BA7E} = {04A0C8D1-78EF-4205-83CD-2C5769ACCA97}
+		{7B4A1FBB-DBEB-4B7B-8A86-936EE147168C} = {AA074B85-82EB-497E-8684-318D0B4B5F54}
+		{C259D07D-D344-4722-ABE9-FCABE82885FA} = {AE641CFC-8AFA-466F-9024-2437B01C5B11}
+		{632E4062-793F-4068-AA2C-F0F20EF65136} = {AE641CFC-8AFA-466F-9024-2437B01C5B11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4D57F39-A801-46D9-ADE5-1770A5440B66}

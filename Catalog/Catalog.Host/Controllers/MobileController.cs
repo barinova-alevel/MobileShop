@@ -2,6 +2,8 @@
 using Catalog.Host.Models.Responses;
 using Catalog.Host.Services.Interfaces;
 using Infrastructure;
+using Infrastructure.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -9,6 +11,7 @@ namespace Catalog.Host.Controllers
 {
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
+    [Authorize(Policy = AuthPolicy.AllowClientPolicy)]
     public class MobileController : ControllerBase
     {
         private readonly ILogger<MobileController> _logger;
@@ -32,7 +35,8 @@ namespace Catalog.Host.Controllers
                 request.PictureFileName, 
                 request.BrandId!.Value, 
                 request.OperationSystemId!.Value,
-                request.AvailableStock);
+                request.AvailableStock,
+                request.Sku);
             return Ok(new AddItemResponse<int?>() { Id = result });
         }
 

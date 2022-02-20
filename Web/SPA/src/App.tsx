@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import "reflect-metadata";
 import { Badge, Container, Nav, Navbar, NavbarBrand, NavLink } from 'react-bootstrap';
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Login from './pages/Login';
-import LoginStore from './stores/LoginStore';
-import ownTypes from './ioc/ownTypes';
 import { types, useInjection } from './ioc';
 import { observer } from 'mobx-react-lite';
 import Basket from './components/Basket';
@@ -20,12 +18,18 @@ import MobileList from './mobile/components/MobileList';
 import LaptopList from './laptop/components/LaptopList';
 import MobileDetails from './mobile/components/MobileDetails';
 import LaptopDetails from './laptop/components/LaptopDetails';
+import { AuthStore } from './stores/AuthStore';
+import { Callback } from './auth/Callback';
+import { Logout } from './auth/Logout';
+import { LogoutCallback } from './auth/LogoutCallback';
+import { SilentRenew } from './auth/SilentRenew';
+import PrivateOutlet from './auth/PrivateOutlet';
 
 function App() {
-  const loginStore = useInjection<LoginStore>(ownTypes.loginStore);
-  const basketStore = useInjection<BasketStore>(ownTypes.basketStore);
+  const loginStore = useInjection<AuthStore>(types.authStore);
+  const basketStore = useInjection<BasketStore>(types.basketStore);
   useEffect(() => {
-    loginStore.restoreUser();
+    loginStore.getUser();
     basketStore.restoreBasket();
   }, [])
 
@@ -34,12 +38,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route path="" element={<MobileList />} />
-          <Route path="basket" element={<Basket />} />
           <Route path="mobile" element={<MobileList />} />
           <Route path="mobile/:id" element={<MobileDetails />} />
           <Route path="laptop" element={<LaptopList />} />
           <Route path="laptop/:id" element={<LaptopDetails />} />
-          <Route path="login" element={<Login />} />
+
+          <Route path="/signin-oidc" element={<Callback />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/logout/callback" element={<LogoutCallback />} />
+          <Route path="/silentrenew" element={<SilentRenew />} />
+          <Route element={<PrivateOutlet />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="basket" element={<Basket />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
@@ -104,10 +115,14 @@ const BasketIcon = observer(() => {
 });
 
 const LoginNav = observer(() => {
-  const store = useInjection<LoginStore>(types.loginStore)
-  return <LinkContainer to="/login">
-    <NavLink>{store.user ? `Hello, ${store.user.firstName}` : "Login"}</NavLink>
-  </LinkContainer>
-})
+  const authStore = useInjection<AuthStore>(types.authStore);
+  return !!authStore.user
+    ? <LinkContainer to="/logout">
+      <NavLink>{authStore?.user?.profile?.name}</NavLink>
+    </LinkContainer>
+    : <LinkContainer to="/login">
+      <NavLink>Login</NavLink>
+    </LinkContainer>
+});
 
 export default App;

@@ -4,30 +4,62 @@ using Catalog.Host.Repositories;
 using Catalog.Host.Repositories.Interfaces;
 using Catalog.Host.Services;
 using Catalog.Host.Services.Interfaces;
+using Infrastructure.Extensions;
+using Infrastructure.Filters;
 using Infrastructure.Services;
 using Infrastructure.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var configuration = GetConfiguration();
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder => builder
-    .AllowAnyOrigin()
-    .AllowAnyHeader()
-    .AllowAnyMethod()
-    );
-});
+builder.Services.AddControllers(options => { options.Filters.Add(typeof(HttpGlobalExceptionFilter)); })
+    .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
 
-// Add services to the container.
+builder.Services.AddSwaggerGen(
+    options =>
+    {
+        options.SwaggerDoc(
+            "v1",
+            new OpenApiInfo
+            {
+                Title = "eShop- Catalog HTTP API",
+                Version = "v1",
+                Description = "The Catalog Service HTTP API"
+            });
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+        var authority = configuration["Authorization:Authority"];
+        options.AddSecurityDefinition(
+            "oauth2",
+            new OpenApiSecurityScheme
+            {
+                Type = SecuritySchemeType.OAuth2,
+                Flows = new OpenApiOAuthFlows()
+                {
+                    Implicit = new OpenApiOAuthFlow()
+                    {
+                        AuthorizationUrl = new Uri($"{authority}/connect/authorize"),
+                        TokenUrl = new Uri($"{authority}/connect/token"),
+                        Scopes = new Dictionary<string, string>()
+                        {
+                            { "mvc", "description" },
+                            { "catalog.catalogitem", "description" },
+                            { "catalog.cataloggenre", "description" }
+                        }
+                    }
+                }
+            });
 
+        options.OperationFilter<AuthorizeCheckOperationFilter>();
+    });
+
+builder.AddConfiguration();
 builder.Services.Configure<CatalogConfig>(configuration);
+
+builder.Services.AddAuthorization(configuration);
+
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDbContextFactory<ApplicationDbContext>(opts => opts.UseNpgsql(configuration["ConnectionString"]));
 builder.Services.AddScoped<IMobileRepository, MobileRepository>();
@@ -44,22 +76,40 @@ builder.Services.AddScoped<ILaptopScreenTypeRepository, LaptopScreenTypeReposito
 builder.Services.AddScoped<ILaptopScreenTypeService, LaptopScreenTypeService>();
 builder.Services.AddScoped<IDbContextWrapper<ApplicationDbContext>, DbContextWrapper<ApplicationDbContext>>();
 
+builder.Services.AddCors(
+    options =>
+    {
+        options.AddPolicy(
+            "CorsPolicy",
+            builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+    });
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger()
+    .UseSwaggerUI(
+        setup =>
+        {
+            setup.SwaggerEndpoint($"{configuration["PathBase"]}/swagger/v1/swagger.json", "Catalog.API V1");
+            setup.OAuthClientId("catalogswaggerui");
+            setup.OAuthAppName("Catalog Swagger UI");
+        });
 
-app.UseHttpsRedirection();
+app.UseRouting();
+app.UseCors("CorsPolicy");
 
-app.UseCors();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(
+    endpoints =>
+    {
+        endpoints.MapDefaultControllerRoute();
+        endpoints.MapControllers();
+    });
 
 CreateDbIfNotExists(app);
 app.Run();

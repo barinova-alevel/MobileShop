@@ -1,9 +1,7 @@
 import { PaginatedDto } from "../dtos/PaginatedDto";
 import { Paginated } from "../models/Paginated";
 
-const baseUrl = 'http://www.alevelwebsite.com/api/catalog/v1';
-
-const mobileBaseUrl = `${baseUrl}/mobilebff`;
+const mobileBaseUrl = `/v1/mobilebff`;
 const MobileAPI = {
     getMobiles: `${mobileBaseUrl}/mobiles`,
     getById: `${mobileBaseUrl}/mobile`,
@@ -11,7 +9,7 @@ const MobileAPI = {
     getOS: `${mobileBaseUrl}/OperationSystems`
 }
 
-const laptopBaseUrl = `${baseUrl}/laptopbff`;
+const laptopBaseUrl = `/v1/laptopbff`;
 const LaptopAPI = {
     getLaptops: `${laptopBaseUrl}/laptops`,
     getById: `${laptopBaseUrl}/laptop`,

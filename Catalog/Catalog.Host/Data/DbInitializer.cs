@@ -138,7 +138,8 @@ namespace Catalog.Host.Data
                         IPS",
                     MobileBrandId = 1,
                     OperationSystemId = 3,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "318258"
                 },
                 new()
                 {
@@ -162,7 +163,8 @@ namespace Catalog.Host.Data
                         120 Гц",
                     MobileBrandId = 1,
                     OperationSystemId = 3,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "376884"
                 },
                 new()
                 {
@@ -186,7 +188,8 @@ namespace Catalog.Host.Data
                         60 Гц",
                     MobileBrandId = 1,
                     OperationSystemId = 3,
-                    AvailableStock = 3
+                    AvailableStock = 3,
+                    Sku = "675384"
                 },
                 new()
                 {
@@ -207,7 +210,8 @@ namespace Catalog.Host.Data
                         IPS",
                     MobileBrandId = 2,
                     OperationSystemId = 1,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "904105"
                 },
                 new()
                 {
@@ -228,7 +232,8 @@ namespace Catalog.Host.Data
                         IPS",
                     MobileBrandId = 2,
                     OperationSystemId = 1,
-                    AvailableStock = 5
+                    AvailableStock = 5,
+                    Sku = "152549"
                 },
                 new()
                 {
@@ -251,7 +256,8 @@ namespace Catalog.Host.Data
                         120 Гц",
                     MobileBrandId = 3,
                     OperationSystemId = 1,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "561249"
                 },
                 new()
                 {
@@ -274,7 +280,8 @@ namespace Catalog.Host.Data
                         60 Гц",
                     MobileBrandId = 3,
                     OperationSystemId = 1,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "223812"
                 },
                 new()
                 {
@@ -297,7 +304,8 @@ namespace Catalog.Host.Data
                         60 Гц",
                     MobileBrandId = 3,
                     OperationSystemId = 1,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "644280"
                 },
                 new()
                 {
@@ -321,7 +329,8 @@ namespace Catalog.Host.Data
                         144 Гц",
                     MobileBrandId = 3,
                     OperationSystemId = 1,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "813744"
                 },
                 new()
                 {
@@ -345,7 +354,8 @@ namespace Catalog.Host.Data
                         144 Гц",
                     MobileBrandId = 3,
                     OperationSystemId = 1,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "797822"
                 },
                 new()
                 {
@@ -369,7 +379,8 @@ namespace Catalog.Host.Data
                         90 Гц",
                     MobileBrandId = 3,
                     OperationSystemId = 1,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "250969"
                 },
                 new()
                 {
@@ -392,7 +403,8 @@ namespace Catalog.Host.Data
                         Стекло",
                     MobileBrandId = 3,
                     OperationSystemId = 1,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "651165"
                 }
             };
         }
@@ -412,10 +424,10 @@ namespace Catalog.Host.Data
                         украинский",
                     Price = 24999M,
                     PictureFileName = "247214370.jpg",
-                    // Description = @"Стандарт связи
                     LaptopBrandId = 5,
                     ScreenTypeId = 2,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "995657"
                 },
                 new()
                 {
@@ -431,7 +443,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "252123791.jpg",
                     LaptopBrandId = 1,
                     ScreenTypeId = 2,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "995657"
                 },
                 new()
                 {
@@ -445,7 +458,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "248481392.jpg",
                     LaptopBrandId = 2,
                     ScreenTypeId = 2,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "919771"
                 },
                 new()
                 {
@@ -459,7 +473,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "231724078.jpg",
                     LaptopBrandId = 1,
                     ScreenTypeId = 3,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "764312"
                 },
                 new()
                 {
@@ -475,7 +490,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "175199396.jpg",
                     LaptopBrandId = 8,
                     ScreenTypeId = 3,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "292346"
                 },
                 new()
                 {
@@ -491,7 +507,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "240968284.jpg",
                     LaptopBrandId = 5,
                     ScreenTypeId = 3,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "154985"
                 },
                 new()
                 {
@@ -505,7 +522,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "144249716.jpg",
                     LaptopBrandId = 3,
                     ScreenTypeId = 4,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "377682"
                 },
                 new()
                 {
@@ -520,7 +538,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "175329107.jpg",
                     LaptopBrandId = 3,
                     ScreenTypeId = 4,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "892591"
                 },
                 new()
                 {
@@ -536,7 +555,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "183731943.jpg",
                     LaptopBrandId = 5,
                     ScreenTypeId = 5,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "492146"
                 },
                 new()
                 {
@@ -552,7 +572,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "194685288.jpg",
                     LaptopBrandId = 4,
                     ScreenTypeId = 6,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "098857"
                 },
                 new()
                 {
@@ -574,7 +595,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "196193058.jpg",
                     LaptopBrandId = 4,
                     ScreenTypeId = 6,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "380860"
                 },
                 new()
                 {
@@ -598,7 +620,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "242663618.jpg",
                     LaptopBrandId = 6,
                     ScreenTypeId = 7,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "586514"
                 },
                 new()
                 {
@@ -618,7 +641,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "251846125.jpg",
                     LaptopBrandId = 8,
                     ScreenTypeId = 8,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "427826"
                 },
                 new()
                 {
@@ -639,7 +663,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "242628909.jpg",
                     LaptopBrandId = 5,
                     ScreenTypeId = 9,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "327586"
                 },
                 new()
                 {
@@ -657,7 +682,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "227154202.jpg",
                     LaptopBrandId = 4,
                     ScreenTypeId = 10,
-                    AvailableStock = 2
+                    AvailableStock = 2,
+                    Sku = "334944"
                 },
                 new()
                 {
@@ -678,7 +704,8 @@ namespace Catalog.Host.Data
                     PictureFileName = "9859612.jpg",
                     LaptopBrandId = 7,
                     ScreenTypeId = 2,
-                    AvailableStock = 1
+                    AvailableStock = 1,
+                    Sku = "181185"
                 }
             };
         }

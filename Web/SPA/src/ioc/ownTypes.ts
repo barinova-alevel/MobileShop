@@ -1,13 +1,14 @@
 export default {
     // httpService: Symbol("httpService"),
     // userService: Symbol("userService"),
-    authenticationService: Symbol("authenticationService"),
+    authService: Symbol("authenticationService"),
+    authStore: Symbol("authStore"),
+    httpService: Symbol("httpService"),
     homePageStore: Symbol("homePageStore"),
     // userStore: Symbol("userStore"),
     catalogService: Symbol("catalogService"),
     catalogStore: Symbol("catalogStore"),
     productStore: Symbol("prouctStore"),
-    loginStore: Symbol("loginStore"),
     basketStore: Symbol("basketStore"),
 
     mobileService: Symbol("mobileService"),

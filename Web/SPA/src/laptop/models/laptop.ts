@@ -10,6 +10,7 @@ export interface Laptop {
     laptopBrand: Brand;
     screenType: ScreenType;
     availableStock: number;
+    sku: string;
 }
 
 export type LaptopFilter = {

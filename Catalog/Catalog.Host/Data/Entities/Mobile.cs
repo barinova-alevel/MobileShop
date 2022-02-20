@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Host.Data.Entities
 {
-    public class Mobile : IBaseEntity
+    public class Mobile : IBaseEntity, IDevice
     {
         public int Id { get; set; }
 
@@ -21,5 +21,7 @@
         public MobileOs OperationSystem { get; set; } = null!;
 
         public int AvailableStock { get; set; }
+
+        public string Sku { get; set; } = null!;
     }
 }

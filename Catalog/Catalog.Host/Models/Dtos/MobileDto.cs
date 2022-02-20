@@ -17,5 +17,6 @@
         public MobileOsDto OperationSystem { get; set; } = null!;
 
         public int AvailableStock { get; set; }
+        public string Sku { get; set; } = null!;
     }
 }

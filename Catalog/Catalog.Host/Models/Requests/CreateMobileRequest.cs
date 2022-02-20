@@ -23,5 +23,9 @@ namespace Catalog.Host.Models.Requests
         public int? OperationSystemId { get; set; }
 
         public int AvailableStock { get; set; }
+
+        [Required]
+        [StringLength(6, MinimumLength = 6)]
+        public string Sku { get; set; } = null!;
     }
 }

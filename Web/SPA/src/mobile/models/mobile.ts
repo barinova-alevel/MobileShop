@@ -10,6 +10,7 @@ export interface Mobile {
     mobileBrand: Brand;
     operationSystem: OperationSystem;
     availableStock: number;
+    sku: string;
 }
 
 export type MobileFilter = {

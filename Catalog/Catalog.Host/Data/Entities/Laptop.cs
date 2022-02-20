@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Host.Data.Entities
 {
-    public class Laptop : IBaseEntity
+    public class Laptop : IBaseEntity, IDevice
     {
         public int Id { get; set; }
 
@@ -21,5 +21,7 @@
         public LaptopScreenType ScreenType { get; set; } = null!;
 
         public int AvailableStock { get; set; }
+
+        public string Sku { get; set; } = null!;
     }
 }

@@ -3,6 +3,8 @@ using Catalog.Host.Models.Requests;
 using Catalog.Host.Models.Response;
 using Catalog.Host.Services.Interfaces;
 using Infrastructure;
+using Infrastructure.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -10,6 +12,7 @@ namespace Catalog.Host.Controllers
 {
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
+    [Authorize(Policy = AuthPolicy.AllowEndUserPolicy)]
     public class LaptopBffController : ControllerBase
     {
         private readonly ILaptopService _laptopService;

@@ -19,7 +19,7 @@ namespace Catalog.Host.Repositories.Interfaces
             _logger = logger;
         }
 
-        public async Task<int?> Add(string name, string description, decimal price, string pictureFileName, int laptopBrandId, int screenTypeId, int availableStock)
+        public async Task<int?> Add(string name, string description, decimal price, string pictureFileName, int laptopBrandId, int screenTypeId, int availableStock, string sku)
         {
             var laptop = await _dbContext.AddAsync(new Laptop
             {
@@ -29,7 +29,8 @@ namespace Catalog.Host.Repositories.Interfaces
                 PictureFileName = pictureFileName,
                 LaptopBrandId = laptopBrandId,
                 ScreenTypeId = screenTypeId,
-                AvailableStock = availableStock
+                AvailableStock = availableStock,
+                Sku = sku
             });
 
             await _dbContext.SaveChangesAsync();

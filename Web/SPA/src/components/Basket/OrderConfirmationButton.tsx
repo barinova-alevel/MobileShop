@@ -3,8 +3,8 @@ import { useCallback } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { types, useInjection } from "../../ioc";
+import { AuthStore } from "../../stores/AuthStore";
 import BasketStore from "../../stores/BasketStore";
-import LoginStore from "../../stores/LoginStore";
 
 interface OrderConfirmationProps {
     onConfirm: () => void;
@@ -12,7 +12,7 @@ interface OrderConfirmationProps {
 
 const OrderConfirmationButton = observer((props: OrderConfirmationProps) => {
     const basketStore = useInjection<BasketStore>(types.basketStore);
-    const loginStore = useInjection<LoginStore>(types.loginStore)
+    const loginStore = useInjection<AuthStore>(types.authStore)
     const navigate = useNavigate();
     const onClick = useCallback(() => {
         if (!loginStore.isUserLoggedIn) {

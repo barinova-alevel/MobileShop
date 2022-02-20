@@ -20,7 +20,7 @@ namespace Catalog.Host.Repositories
             _logger = logger;
         }
 
-        public async Task<int?> Add(string name, string description, decimal price, string pictureFileName, int brandId, int operationSystemId, int availableStock)
+        public async Task<int?> Add(string name, string description, decimal price, string pictureFileName, int brandId, int operationSystemId, int availableStock, string sku)
         {
             var mobile = await _dbContext.AddAsync(new Mobile
             {
@@ -30,7 +30,8 @@ namespace Catalog.Host.Repositories
                 PictureFileName = pictureFileName,
                 MobileBrandId = brandId,
                 OperationSystemId = operationSystemId,
-                AvailableStock = availableStock
+                AvailableStock = availableStock,
+                Sku = sku
             });
 
             await _dbContext.SaveChangesAsync();

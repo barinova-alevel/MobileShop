@@ -27,9 +27,9 @@ namespace Catalog.Host.Services
             this._mapper = mapper;
         }
 
-        public Task<int?> AddAsync(string name, string description, decimal price, string pictureFileName, int brandId, int operationSystemId, int availableStock)
+        public Task<int?> AddAsync(string name, string description, decimal price, string pictureFileName, int brandId, int operationSystemId, int availableStock, string sku)
         {
-            return ExecuteSafeAsync(() => _mobileRepository.Add(name, description, price, pictureFileName, brandId, operationSystemId, availableStock));
+            return ExecuteSafeAsync(() => _mobileRepository.Add(name, description, price, pictureFileName, brandId, operationSystemId, availableStock, sku));
         }
 
         public Task<int?> UpdateAsync(int id, string name, string description, decimal price, string pictureFileName, int brandId, int operationSystemId, int availableStock)
