@@ -40,7 +40,7 @@ services:
      environment:
        - ASPNETCORE_ENVIRONMENT=Development
        - ASPNETCORE_URLS=http://+:5002
-       - MvcUrl=http://www.alevelwebsite.com:5009
+       - MvcUrl=http://www.alevelwebsite.com
        - CatalogApi=http://www.alevelwebsite.com:5000
        - BasketApi=http://www.alevelwebsite.com:5003
      ports:

@@ -9,7 +9,7 @@ export default class MobileStore {
     @observable mobile: Mobile | null = null;
     @observable isLoading = false;
 
-    @inject(types.mobileService) 
+    @inject(types.mobileService)
     private readonly mobileService!: MobileService
     constructor() {
         makeObservable(this);
@@ -17,20 +17,18 @@ export default class MobileStore {
 
     @action
     public init = async (id: number) => {
+        this.isLoading = true;
+        
         try {
-            this.isLoading = true;
             const result = await this.mobileService.getById(id);
-            runInAction(() => {
-                this.mobile = result;
-            });
+            this.mobile = result;
 
         } catch (e) {
             if (e instanceof Error) {
                 console.error(e.message);
             }
         }
-        runInAction(() => {
-            this.isLoading = false;
-        });
+
+        this.isLoading = false;
     }
 }

@@ -61,6 +61,11 @@ namespace Basket.Host.Services
             }
         }
 
+        public Task<bool> DeleteAsync(string key)
+        {
+            return GetRedisDatabase().KeyDeleteAsync(key);
+        }
+
         private IDatabase GetRedisDatabase() => _redisCacheConnectionService.Connection.GetDatabase();
     }
 }

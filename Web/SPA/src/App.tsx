@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import { types, useInjection } from './ioc';
 import { observer } from 'mobx-react-lite';
 import Basket from './components/Basket';
-import BasketStore from './stores/BasketStore';
+import BasketStore from './basket/BasketStore';
 import { LinkContainer } from 'react-router-bootstrap'
 import logo from './images/icon.png'
 import './App.css'
@@ -30,7 +30,7 @@ function App() {
   const basketStore = useInjection<BasketStore>(types.basketStore);
   useEffect(() => {
     loginStore.getUser();
-    basketStore.restoreBasket();
+    basketStore.getBasket();
   }, [])
 
   return (
@@ -109,7 +109,11 @@ const BasketIcon = observer(() => {
   return <div>
     <Icon name="basket" size={20} />
     {
-      !!store.totalCount && <Badge className="small-badge" bg="dark" pill>{store.totalCount}</Badge>
+      !!store.basket.totalQuantity && <Badge
+        className="small-badge"
+        bg="dark" pill>
+        {store.basket.totalQuantity}
+      </Badge>
     }
   </div>
 });

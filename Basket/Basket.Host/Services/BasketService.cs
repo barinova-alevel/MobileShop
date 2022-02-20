@@ -1,5 +1,7 @@
-using Basket.Host.Models;
+using Basket.Host.Entities;
+using Basket.Host.Extensions;
 using Basket.Host.Services.Interfaces;
+using System.Security.Claims;
 
 namespace Basket.Host.Services;
 
@@ -11,15 +13,21 @@ public class BasketService : IBasketService
     {
         _cacheService = cacheService;
     }
-    
-    public async Task TestAdd(string userId, string data)
+
+    public async Task<ShoppingCart> SetAsync(ClaimsPrincipal principal, List<ShoppingCartItem> items)
     {
-       await _cacheService.AddOrUpdateAsync(userId, data);
+        var basket = new ShoppingCart { Items = items };
+        await _cacheService.AddOrUpdateAsync(principal.GetUserId(), basket);
+        return basket;
     }
 
-    public async Task<TestGetResponse> TestGet(string userId)
+    public async Task<ShoppingCart> GetAsync(ClaimsPrincipal principal)
     {
-        var result = await _cacheService.GetAsync<string>(userId);
-        return new TestGetResponse() { Data = result };
+        return await _cacheService.GetAsync<ShoppingCart>(principal.GetUserId());
+    }
+
+    public async Task<bool> DeleteAsync(ClaimsPrincipal principal)
+    {
+        return await _cacheService.DeleteAsync(principal.GetUserId());
     }
 }

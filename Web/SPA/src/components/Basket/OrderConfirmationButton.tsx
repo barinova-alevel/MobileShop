@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { types, useInjection } from "../../ioc";
 import { AuthStore } from "../../stores/AuthStore";
-import BasketStore from "../../stores/BasketStore";
+import BasketStore from "../../basket/BasketStore";
 
 interface OrderConfirmationProps {
     onConfirm: () => void;

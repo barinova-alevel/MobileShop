@@ -1,9 +1,11 @@
-using Basket.Host.Models;
+using Basket.Host.Entities;
+using System.Security.Claims;
 
 namespace Basket.Host.Services.Interfaces;
 
 public interface IBasketService
 {
-    Task TestAdd(string userId, string data);
-    Task<TestGetResponse> TestGet(string userId);
+    Task<ShoppingCart> SetAsync(ClaimsPrincipal principal, List<ShoppingCartItem> items);
+    Task<ShoppingCart> GetAsync(ClaimsPrincipal principal);
+    Task<bool> DeleteAsync(ClaimsPrincipal principal);
 }

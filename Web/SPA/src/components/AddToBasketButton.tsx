@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite"
 import { useCallback } from "react"
 import { types, useInjection } from "../ioc"
 import { Device } from "../models/Device"
-import BasketStore from "../stores/BasketStore"
+import BasketStore from "../basket/BasketStore"
 
 interface ButtonProps {
     device: Device

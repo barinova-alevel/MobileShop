@@ -22,21 +22,26 @@ public class BasketBffController : ControllerBase
     }
     
     [HttpPost]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<IActionResult> TestAdd(TestAddRequest data)
+    [ProducesResponseType(typeof(GetResponse), (int)HttpStatusCode.OK)]
+    public async Task<IActionResult> Set(SetRequest data)
     {
-        var basketId = User.Claims.FirstOrDefault(x => x.Type == "sub")?.Value;
-        await _basketService.TestAdd(basketId!, data.Data);
-        return Ok();
+        var basket = await _basketService.SetAsync(User, data.Data);
+        return Ok(new GetResponse { Data = basket });
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(TestGetResponse), (int)HttpStatusCode.OK)]
-    [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.TooManyRequests)]
-    public async Task<IActionResult> TestGet()
+    [ProducesResponseType(typeof(GetResponse), (int)HttpStatusCode.OK)]
+    public async Task<IActionResult> Get()
     {
-        var basketId = User.Claims.FirstOrDefault(x => x.Type == "sub")?.Value;
-        var response = await _basketService.TestGet(basketId!);
-        return Ok(response);
+        var basket = await _basketService.GetAsync(User);
+        return Ok(new GetResponse { Data = basket });
+    }
+
+    [HttpPost]
+    [ProducesResponseType((int)HttpStatusCode.NoContent)]
+    public async Task<IActionResult> Delete()
+    {
+        await _basketService.DeleteAsync(User);
+        return NoContent();
     }
 }

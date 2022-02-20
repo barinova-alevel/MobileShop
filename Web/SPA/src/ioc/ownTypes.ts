@@ -10,6 +10,7 @@ export default {
     catalogStore: Symbol("catalogStore"),
     productStore: Symbol("prouctStore"),
     basketStore: Symbol("basketStore"),
+    basketService: Symbol("basketService"),
 
     mobileService: Symbol("mobileService"),
     mobileStore: Symbol("mobileStore"),
