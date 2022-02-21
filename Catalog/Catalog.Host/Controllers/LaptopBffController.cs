@@ -30,6 +30,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(PaginatedItemsResponse<LaptopDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Laptops(PaginatedItemsRequest<LaptopFilter> request)
         {
@@ -38,6 +39,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(MobileDto), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Laptop(IdRequest request)
         {
@@ -51,6 +53,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(List<LaptopBrandDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Brands()
         {
@@ -59,6 +62,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(List<LaptopScreenTypeDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> ScreenTypes()
         {

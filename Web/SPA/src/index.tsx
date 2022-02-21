@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import { IoCProvider } from './ioc/ioc.react';
 import { container } from './ioc/ioc';
+import App from './components/App/App';
 
 ReactDOM.render(
   <React.StrictMode>

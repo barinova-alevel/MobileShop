@@ -1,6 +1,8 @@
 import { inject, injectable } from 'inversify'
 import { types } from '../ioc'
-import { AuthStore } from '../stores/AuthStore'
+import { AuthStore } from '../modules/auth/AuthStore'
+
+const HTTP_NO_CONTENT = 204;
 
 export interface IHttpService {
   postAsync: <T>(path: string, payload?: any) => Promise<T>
@@ -18,7 +20,9 @@ export default class HttpService implements IHttpService {
       throw Error(message.error || 'Request error')
     }
 
-    return response.json();
+    return response.status === HTTP_NO_CONTENT
+      ? Promise.resolve(null)
+      : response.json();
   }
 
   public readonly postAsync = async <T>(path: string, payload?: any) => {
@@ -37,7 +41,7 @@ export default class HttpService implements IHttpService {
       headers: headers,
       body: payload ? JSON.stringify(payload) : undefined
     })
-    .then(this.handleResponse)
+      .then(this.handleResponse)
   }
 }
 

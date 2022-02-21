@@ -1,10 +1,11 @@
 import { observer } from "mobx-react-lite";
 import { useCallback } from "react";
-import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { Device } from "../models/Device";
-import AddToBasketButton from "./AddToBasketButton";
+import { AddToBasketButton } from "../modules/basket/components";
 import Pagination from "./Pagination";
-import { Price } from "./Utils";
+import { Spinner } from "./Spinner";
+import Price from "./Price";
 
 type Props = {
     devices?: Device[];
@@ -19,7 +20,7 @@ const DeviceList = observer((props: Props) => {
     return <Container>
         <Row>
             {props.isLoading ? (
-                <Spinner animation="border" />
+                <Spinner />
             ) : (
                 <>
                     {props.devices?.map((device, key) => (

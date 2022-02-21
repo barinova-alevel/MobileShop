@@ -29,6 +29,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(PaginatedItemsResponse<MobileDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Mobiles(PaginatedItemsRequest<MobileFilter> request)
         {
@@ -37,6 +38,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(MobileDto), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Mobile(IdRequest request)
         {
@@ -50,6 +52,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(List<MobileBrandDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Brands()
         {
@@ -58,6 +61,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(List<MobileOsDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> OperationSystems()
         {

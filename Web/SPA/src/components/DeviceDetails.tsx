@@ -1,7 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import { observer } from 'mobx-react-lite'
-import AddToBasketButton from './AddToBasketButton'
-import { Price } from './Utils'
+import { AddToBasketButton } from '../modules/basket/components'
+import Price from './Price'
 import { Device } from '../models/Device'
 
 type Props = {

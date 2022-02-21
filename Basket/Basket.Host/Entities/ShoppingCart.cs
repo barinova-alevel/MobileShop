@@ -2,7 +2,9 @@
 {
     public class ShoppingCart
     {
-        public List<ShoppingCartItem> Items { get; set; } = new List<ShoppingCartItem>();
+        public static ShoppingCart Empty { get; } = new();
+
+        public List<ShoppingCartItem> Items { get; set; } = new();
 
         public ShoppingCart()
         {

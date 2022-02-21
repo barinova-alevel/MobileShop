@@ -45,7 +45,7 @@ namespace IdentityServer
             app.UseDeveloperExceptionPage();
             
             app.UseIdentityServer();
-            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Strict });
+            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
             app.UseStaticFiles();
             app.UseRouting();
             

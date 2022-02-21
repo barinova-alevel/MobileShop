@@ -23,7 +23,7 @@ public class BasketService : IBasketService
 
     public async Task<ShoppingCart> GetAsync(ClaimsPrincipal principal)
     {
-        return await _cacheService.GetAsync<ShoppingCart>(principal.GetUserId());
+        return (await _cacheService.GetAsync<ShoppingCart>(principal.GetUserId())) ?? ShoppingCart.Empty;
     }
 
     public async Task<bool> DeleteAsync(ClaimsPrincipal principal)
