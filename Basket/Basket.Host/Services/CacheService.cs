@@ -23,7 +23,7 @@ namespace Basket.Host.Services
             _config = config.Value;
         }
 
-        public Task AddOrUpdateAsync<T>(string key, T value) 
+        public Task AddOrUpdateAsync<T>(string key, T value)
         => AddOrUpdateInternalAsync(key, value);
 
         public async Task<T> GetAsync<T>(string key)
@@ -33,18 +33,31 @@ namespace Basket.Host.Services
             var cacheKey = GetItemCacheKey(key);
 
             var serialized = await redis.StringGetAsync(cacheKey);
-            
-            return serialized.HasValue ? 
-                _jsonSerializer.Deserialize<T>(serialized.ToString()) 
-                : default(T)!;
+
+            return serialized.HasValue ?
+                _jsonSerializer.Deserialize<T>(serialized.ToString())
+                : default(T) !;
+        }
+
+        public Task<bool> DeleteAsync(string key)
+        {
+            return GetRedisDatabase().KeyDeleteAsync(key);
         }
 
         private string GetItemCacheKey(string userId) =>
             $"{userId}";
 
-        private async Task AddOrUpdateInternalAsync<T>(string key, T value,
-            IDatabase redis = null!, TimeSpan? expiry = null)
+        private async Task AddOrUpdateInternalAsync<T>(
+            string key,
+            T value,
+            IDatabase? redis = null,
+            TimeSpan? expiry = null)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException($"'{nameof(key)}' cannot be null or empty.", nameof(key));
+            }
+
             redis = redis ?? GetRedisDatabase();
             expiry = expiry ?? _config.CacheTimeout;
 
@@ -59,11 +72,6 @@ namespace Basket.Host.Services
             {
                 _logger.LogInformation($"Cached value for key {key} updated");
             }
-        }
-
-        public Task<bool> DeleteAsync(string key)
-        {
-            return GetRedisDatabase().KeyDeleteAsync(key);
         }
 
         private IDatabase GetRedisDatabase() => _redisCacheConnectionService.Connection.GetDatabase();

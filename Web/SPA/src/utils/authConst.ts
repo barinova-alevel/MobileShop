@@ -3,5 +3,5 @@ export const AuthConst = {
   client_id: process.env.REACT_APP_IDENTITY_CLIENT_ID,
   client_secret: process.env.REACT_APP_IDENTITY_CLIENT_SECRET,
   response_type: 'code',
-  scope: 'openid profile mvc',
+  scope: 'openid profile spa',
 }

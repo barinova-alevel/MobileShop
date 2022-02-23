@@ -12,6 +12,7 @@ namespace Catalog.Host.Controllers
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     [Authorize(Policy = AuthPolicy.AllowClientPolicy)]
+    [Scope("catalog.mobile.os")]
     public class MobileOsController : ControllerBase
     {
         private readonly IMobileOsService _osService;

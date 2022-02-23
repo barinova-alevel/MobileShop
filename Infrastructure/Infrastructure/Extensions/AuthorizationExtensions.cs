@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Extensions;
 
@@ -33,14 +32,14 @@ public static class AuthorizationExtensions
         {
             options.AddPolicy(AuthPolicy.AllowEndUserPolicy, policy =>
             {
-                    policy.AuthenticationSchemes.Add(AuthScheme.Site);
-                    policy.RequireClaim(JwtRegisteredClaimNames.Sub);
+                policy.AuthenticationSchemes.Add(AuthScheme.Site);
+                policy.RequireClaim(JwtRegisteredClaimNames.Sub);
             });
             options.AddPolicy(AuthPolicy.AllowClientPolicy, policy =>
             {
-                    policy.AuthenticationSchemes.Add(AuthScheme.Internal);
-                    policy.Requirements.Add(new DenyAnonymousAuthorizationRequirement());
-                    policy.Requirements.Add(new ScopeRequirement());
+                policy.AuthenticationSchemes.Add(AuthScheme.Internal);
+                policy.Requirements.Add(new DenyAnonymousAuthorizationRequirement());
+                policy.Requirements.Add(new ScopeRequirement());
             });
         });
 

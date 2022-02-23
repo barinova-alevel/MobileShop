@@ -20,7 +20,7 @@ public class BasketBffController : ControllerBase
         _logger = logger;
         _basketService = basketService;
     }
-    
+
     [HttpPost]
     [ProducesResponseType(typeof(GetResponse), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> Set(SetRequest data)

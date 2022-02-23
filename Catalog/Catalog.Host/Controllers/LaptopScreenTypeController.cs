@@ -12,6 +12,7 @@ namespace Catalog.Host.Controllers
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     [Authorize(Policy = AuthPolicy.AllowClientPolicy)]
+    [Scope("catalog.laptop.screentype")]
     public class LaptopScreenTypeController : ControllerBase
     {
         private readonly ILaptopScreenTypeService _screenTypeService;

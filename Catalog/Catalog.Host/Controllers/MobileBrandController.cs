@@ -12,6 +12,7 @@ namespace Catalog.Host.Controllers
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     [Authorize(Policy = AuthPolicy.AllowClientPolicy)]
+    [Scope("catalog.mobile.brand")]
     public class MobileBrandController : ControllerBase
     {
         private readonly IMobileBrandService _brandService;

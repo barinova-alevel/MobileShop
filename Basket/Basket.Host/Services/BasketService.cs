@@ -1,7 +1,7 @@
+using System.Security.Claims;
 using Basket.Host.Entities;
 using Basket.Host.Extensions;
 using Basket.Host.Services.Interfaces;
-using System.Security.Claims;
 
 namespace Basket.Host.Services;
 

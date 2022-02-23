@@ -44,9 +44,13 @@ builder.Services.AddSwaggerGen(
                         TokenUrl = new Uri($"{authority}/connect/token"),
                         Scopes = new Dictionary<string, string>()
                         {
-                            { "mvc", "description" },
-                            { "catalog.catalogitem", "description" },
-                            { "catalog.cataloggenre", "description" }
+                            { "spa", string.Empty },
+                            { "catalog.laptop.brand", string.Empty },
+                            { "catalog.laptop", string.Empty },
+                            { "catalog.laptop.screentype", string.Empty },
+                            { "catalog.mobile.brand", string.Empty },
+                            { "catalog.mobile", string.Empty },
+                            { "catalog.mobile.os", string.Empty }
                         }
                     }
                 }
@@ -76,16 +80,16 @@ builder.Services.AddScoped<ILaptopScreenTypeRepository, LaptopScreenTypeReposito
 builder.Services.AddScoped<ILaptopScreenTypeService, LaptopScreenTypeService>();
 builder.Services.AddScoped<IDbContextWrapper<ApplicationDbContext>, DbContextWrapper<ApplicationDbContext>>();
 
-builder.Services.AddCors(
-    options =>
-    {
-        options.AddPolicy(
-            "CorsPolicy",
-            builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-    });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "CorsPolicy",
+        builder => builder
+            .SetIsOriginAllowed((host) => true)
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
 
 var app = builder.Build();
 

@@ -1,5 +1,5 @@
-using Basket.Host.Entities;
 using System.Security.Claims;
+using Basket.Host.Entities;
 
 namespace Basket.Host.Services.Interfaces;
 

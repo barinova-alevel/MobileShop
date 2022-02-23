@@ -23,16 +23,24 @@ namespace IdentityServer
                 {
                     Scopes = new List<Scope>
                     {
-                        new Scope("mvc")
+                        new Scope("spa")
                     },
                 },
                 new ApiResource("catalog")
                 {
                     Scopes = new List<Scope>
                     {
-                        new Scope("catalog.catalogbff"),
-                        new Scope("catalog.catalogitem"),
+                        new Scope("catalog.laptop.brand"),
+                        new Scope("catalog.laptop"),
+                        new Scope("catalog.laptop.screentype"),
+                        new Scope("catalog.mobile.brand"),
+                        new Scope("catalog.mobile"),
+                        new Scope("catalog.mobile.os"),
                     },
+                },
+                new ApiResource("basket")
+                {
+                    Scopes = new List<Scope>(),
                 }
             };
         }
@@ -43,27 +51,14 @@ namespace IdentityServer
             {
                 new Client
                 {
-                    ClientId = "mvc_pkce",
-                    ClientName = "MVC PKCE Client",
+                    ClientId = "spa_pkce",
+                    ClientName = "SPA PKCE Client",
                     AllowedGrantTypes = GrantTypes.Code,
                     ClientSecrets = {new Secret("secret".Sha256())},
-                    RedirectUris = { $"{configuration["MvcUrl"]}/signin-oidc"},
-                    AllowedScopes = {"openid", "profile", "mvc"},
+                    RedirectUris = { $"{configuration["SpaUrl"]}/signin-oidc"},
+                    AllowedScopes = {"openid", "profile", "spa"},
                     RequirePkce = true,
                     RequireConsent = false
-                },
-                new Client
-                {
-                    ClientId = "catalog",
-
-                    // no interactive user, use the clientid/secret for authentication
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-
-                    // secret for authentication
-                    ClientSecrets =
-                    {
-                        new Secret("secret".Sha256())
-                    },
                 },
                 new Client
                 {
@@ -77,7 +72,13 @@ namespace IdentityServer
 
                     AllowedScopes =
                     {
-                        "mvc", "catalog.catalogbff", "catalog.catalogitem"
+                        "spa",
+                        "catalog.laptop.brand",
+                        "catalog.laptop",
+                        "catalog.laptop.screentype",
+                        "catalog.mobile.brand",
+                        "catalog.mobile",
+                        "catalog.mobile.os",
                     }
                 },
                 new Client
@@ -92,7 +93,10 @@ namespace IdentityServer
 
                     AllowedScopes =
                     {
-                        "mvc"
+                        "spa",
+                        "basket.set",
+                        "basket.read",
+                        "basket.delete",
                     }
                 },
             };

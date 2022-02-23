@@ -2,19 +2,19 @@
 {
     public class ShoppingCart
     {
-        public static ShoppingCart Empty { get; } = new();
-
-        public List<ShoppingCartItem> Items { get; set; } = new();
-
         public ShoppingCart()
         {
         }
+
+        public static ShoppingCart Empty { get; } = new ();
+
+        public List<ShoppingCartItem> Items { get; set; } = new ();
 
         public decimal TotalPrice
         {
             get
             {
-                return Items.Aggregate(0M, (a, item) => a + item.Price * item.Quantity);
+                return Items.Aggregate(0M, (a, item) => a + (item.Price * item.Quantity));
             }
         }
 

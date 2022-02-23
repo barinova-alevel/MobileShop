@@ -12,6 +12,7 @@ namespace Catalog.Host.Controllers
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     [Authorize(Policy = AuthPolicy.AllowClientPolicy)]
+    [Scope("catalog.mobile")]
     public class MobileController : ControllerBase
     {
         private readonly ILogger<MobileController> _logger;

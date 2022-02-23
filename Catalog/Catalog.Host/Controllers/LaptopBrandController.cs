@@ -12,6 +12,7 @@ namespace Catalog.Host.Controllers
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     [Authorize(Policy = AuthPolicy.AllowClientPolicy)]
+    [Scope("catalog.laptop.brand")]
     public class LaptopBrandController : ControllerBase
     {
         private readonly ILaptopBrandService _brandService;

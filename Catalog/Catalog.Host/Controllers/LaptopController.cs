@@ -12,6 +12,7 @@ namespace Catalog.Host.Controllers
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     [Authorize(Policy = AuthPolicy.AllowClientPolicy)]
+    [Scope("catalog.laptop")]
     public class LaptopController : ControllerBase
     {
         private readonly ILogger<LaptopController> _logger;
